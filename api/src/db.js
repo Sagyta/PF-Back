@@ -34,6 +34,8 @@ sequelize.models = Object.fromEntries(capsEntries);
 const { 
   New, 
   Comment, 
+  Role, 
+  User,
 } = sequelize.models;
 
 // Aca vendrian las relaciones
@@ -42,6 +44,9 @@ const {
 
 New.hasMany(Comment)
 Comment.belongsTo(New) 
+
+User.belongsTo(Role);
+Role.hasMany(User);
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
