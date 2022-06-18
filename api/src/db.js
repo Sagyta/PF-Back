@@ -37,7 +37,8 @@ const {
 } = sequelize.models;
 
 // Aca vendrian las relaciones
-// Product.hasMany(Reviews);
+// modelo.hasMany(modelo) de 1 a muchos;
+// modelo.belongsTo(modelo) de muchos a 1
 
 New.hasMany(Comment)
 Comment.belongsTo(New) 
