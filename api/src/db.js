@@ -36,11 +36,8 @@ const {
   Comment, 
   Role, 
   User,
-<<<<<<< HEAD
-  Contact
-=======
+  Contact,
   Sport
->>>>>>> routermarco
 } = sequelize.models;
 
 // Aca vendrian las relaciones
