@@ -36,17 +36,18 @@ const {
   Comment, 
   Role, 
   User,
+  Contact
 } = sequelize.models;
 
 // Aca vendrian las relaciones
 // modelo.hasMany(modelo) de 1 a muchos;
 // modelo.belongsTo(modelo) de muchos a 1
 
-New.hasMany(Comment)
+/* New.hasMany(Comment)
 Comment.belongsTo(New) 
 
 User.belongsTo(Role);
-Role.hasMany(User);
+Role.hasMany(User); */
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

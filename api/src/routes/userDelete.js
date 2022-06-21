@@ -2,7 +2,7 @@ const { User } = require("../db");
 var express = require("express");
 var router = express.Router();
 
-router.delete("/user/:id", async(req,res)=>{
+router.delete("/:id", async(req,res,next)=>{
     try{
         const { id }= req.params
         const delUser = await User.findByPk(id);
@@ -12,6 +12,8 @@ router.delete("/user/:id", async(req,res)=>{
         }
         res.status(404).send("Usuario no encontrado")
     }catch(error){
-        res.status(400).send(error)
+        next(error)
     }
 })
+
+module.exports = router;
