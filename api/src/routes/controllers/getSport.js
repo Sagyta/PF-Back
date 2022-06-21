@@ -6,7 +6,7 @@ async function getSport (req,res) {
     console.log(data);
     console.log(data.length)
     if(data.length === 0){
-        return res.send({msg: 'No ningun deporte en la base de datos'});
+        return res.send({msg: 'No hay ningun deporte en la base de datos'});
     }else {
         res.send(data)
     }
