@@ -1,6 +1,4 @@
 const { Router } = require('express');
-// Importar todos los routers;
-// Ejemplo: const authRouter = require('./auth.js');
 const { getComment, getCommentId, postComment, putComment, deleteComment } =require('./controllers/Comments')
 
 const router = Router();

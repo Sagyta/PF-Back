@@ -36,33 +36,20 @@ const {
   Comment, 
   Role, 
   User,
-<<<<<<< Updated upstream
   Contact,
-  Sport
-=======
+  Sport,
   Category,
   Pay,
-  Sport,
   Teacher,
->>>>>>> Stashed changes
 } = sequelize.models;
 
 // Aca vendrian las relaciones
 // modelo.hasMany(modelo) de 1 a muchos;
 // modelo.belongsTo(modelo) de muchos a 1
 
-<<<<<<< Updated upstream
-/* New.hasMany(Comment)
-Comment.belongsTo(New) 
-
-User.belongsTo(Role);
-Role.hasMany(User); */
-
 User.belongsToMany(Sport, {through:  'UserSport'});
 Sport.belongsToMany(User, {through:  'UserSport'});
 
-
-=======
 New.hasMany(Comment);
 Comment.belongsTo(New); 
 
@@ -71,7 +58,7 @@ Comment.belongsTo(User);
 
 Role.hasMany(User);
 User.belongsTo(Role);
->>>>>>> Stashed changes
+
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
