@@ -8,9 +8,9 @@ const userGet = require('./userGet');
 const userPut = require('./userPut');
 const contactPost = require('./contactPost');
 const contactGet = require('./contactGet');
+const sport  = require('./sport')
 
 const router = Router();
-<<<<<<< HEAD
 
 //router.use('/', noticiasRoute)
 router.use('/user', userPost)
@@ -19,10 +19,7 @@ router.use('/user', userGet)
 router.use('/user', userPut)
 router.use('/contact', contactPost)
 router.use('/contact', contactGet)
-=======
-const sport  = require('./sport')
 
 router.use('/sport', sport)
->>>>>>> routermarco
 
 module.exports = router;
