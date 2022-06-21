@@ -1,13 +1,21 @@
-const {DataTypes, } = require('sequelize');
+const {DataTypes } = require('sequelize');
 
 module.exports = (sequelize)=>{
 	sequelize.define('user',{
 		id: {
+<<<<<<< Updated upstream
 			
 			primaryKey: true,
 			type: DataTypes.UUID,
 			defaultValue: DataTypes.UUIDV4
 		},
+=======
+			type:DataTypes.UUID,
+			defaultValue: DataTypes.UUIDV4,
+			primaryKey: true,
+			allowNull: false
+		},		
+>>>>>>> Stashed changes
 		name: {
 			type: DataTypes.STRING,
 			allowNull: false
