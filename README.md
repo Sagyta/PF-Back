@@ -13,12 +13,12 @@ COMENTARIOS
 - PUT/DELETE: http://localhost:3001/comment/{ID}
 
 USERS
--GET: http://localhost:3001/user
--GET: http://localhost:3001/user/:id
--PUT: http://localhost:3001/user
--DELETE: http://localhost:3001/user
--POST: http://localhost:3001/user
+- GET: http://localhost:3001/user
+- GET: http://localhost:3001/user/:id
+- PUT: http://localhost:3001/user/:id
+- DELETE: http://localhost:3001/user/:id
+- POST: http://localhost:3001/user
 
 CONTACT
--POST: http://localhost:3001/contact
--GET: http://localhost:3001/contact
+- POST: http://localhost:3001/contact
+- GET: http://localhost:3001/contact
