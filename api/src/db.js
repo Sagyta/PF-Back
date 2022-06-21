@@ -36,6 +36,7 @@ const {
   Comment, 
   Role, 
   User,
+  Sport
 } = sequelize.models;
 
 // Aca vendrian las relaciones
