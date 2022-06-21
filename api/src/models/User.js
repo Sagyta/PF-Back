@@ -3,11 +3,7 @@ const {DataTypes, } = require('sequelize');
 module.exports = (sequelize)=>{
 	sequelize.define('user',{
 		id: {
-<<<<<<< HEAD
-=======
-			type:DataTypes.UUID,
-			defaultValue: DataTypes.UUIDV4,
->>>>>>> routermarco
+			
 			primaryKey: true,
 			type: DataTypes.UUID,
 			defaultValue: DataTypes.UUIDV4
