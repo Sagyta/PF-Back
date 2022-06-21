@@ -50,6 +50,11 @@ Comment.belongsTo(New)
 User.belongsTo(Role);
 Role.hasMany(User); */
 
+User.belongsToMany(Sport, {through:  'UserSport'});
+Sport.belongsToMany(User, {through:  'UserSport'});
+
+
+
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
