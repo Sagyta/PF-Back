@@ -8,6 +8,7 @@ const userGet = require('./userGet');
 const userPut = require('./userPut');
 const contactPost = require('./contactPost');
 const contactGet = require('./contactGet');
+const sport  = require('./sport')
 
 const router = Router();
 
@@ -18,5 +19,7 @@ router.use('/user', userGet)
 router.use('/user', userPut)
 router.use('/contact', contactPost)
 router.use('/contact', contactGet)
+
+router.use('/sport', sport)
 
 module.exports = router;
