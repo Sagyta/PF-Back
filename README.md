@@ -19,6 +19,16 @@ USERS
 - DELETE: http://localhost:3001/user/:id
 - POST: http://localhost:3001/user
 
-CONTACT
+CONTACTO
+
 - POST: http://localhost:3001/contact
 - GET: http://localhost:3001/contact
+- DELETE: http://localhost:3001/contact/:id
+
+PAGO CUOTA
+
+- GET: http://localhost:3001/pay
+- GET: http://localhost:3001/pay/:id
+- PUT: http://localhost:3001/pay/:id
+- POST: http://localhost:3001/pay
+
