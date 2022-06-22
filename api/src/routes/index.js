@@ -10,6 +10,7 @@ const userGet = require('./userGet');
 const userPut = require('./userPut');
 const contactPost = require('./contactPost');
 const contactGet = require('./contactGet');
+const role = require('./role')
 const sport  = require('./sport')
 
 const router = Router();
@@ -24,6 +25,6 @@ router.use('/contact', contactGet)
 router.use('/sport', sport)
 router.use('/news', newRoute)
 router.use('/comment', commentRoute)
-
+router.use('/role', role)
 
 module.exports = router;
