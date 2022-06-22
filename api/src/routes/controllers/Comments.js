@@ -5,7 +5,7 @@ async function getComment (req,res,next){
     try {
         const commentFind = await Comment.findAll({
             attributes:[
-                'id',
+                'id',//este despues no va es solo para poder sacar el id yo ahora
                 'comment'
             ]
         })
