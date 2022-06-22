@@ -14,9 +14,8 @@ const contactDelete = require('./contactDelete');
 const sport  = require('./sport');
 const category = require('./Category');
 const pay = require('./Pay')
-
 const role = require('./role')
-const sport  = require('./sport')
+
 
 const router = Router();
 
