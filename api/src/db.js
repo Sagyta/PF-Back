@@ -41,6 +41,7 @@ const {
   Category,
   Pay,
   Teacher,
+  Inscription,
 } = sequelize.models;
 
 // Aca vendrian las relaciones
@@ -58,6 +59,15 @@ Comment.belongsTo(User);
 
 Role.hasMany(User);
 User.belongsTo(Role);
+
+User.hasMany(Inscription)
+Inscription.belongsTo(User);
+
+Category.hasMany(Inscription)
+Inscription.belongsTo(Category);
+
+Sport.hasMany(Inscription)
+Inscription.belongsTo(Sport);
 
 
 module.exports = {
