@@ -15,6 +15,8 @@ const sport  = require('./sport');
 const category = require('./Category');
 const pay = require('./Pay')
 
+const role = require('./role')
+const sport  = require('./sport')
 
 const router = Router();
 
@@ -32,5 +34,6 @@ router.use('/comment', commentRoute)
 router.use('/category', category)
 router.use('/pay', pay)
 
+router.use('/role', role)
 
 module.exports = router;

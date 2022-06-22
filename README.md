@@ -13,7 +13,6 @@ COMENTARIOS
 - PUT/DELETE: http://localhost:3001/comment/{ID}
 
 USERS
-
 - GET: http://localhost:3001/user
 - GET: http://localhost:3001/user/:id
 - PUT: http://localhost:3001/user/:id
