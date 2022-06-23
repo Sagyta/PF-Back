@@ -1,4 +1,4 @@
-const {New} = require('../../db')
+const {New, Comment} = require('../../db')
 
 
 async function getNews (req,res,next){
@@ -14,7 +14,10 @@ async function getNews (req,res,next){
 async function getNewsId(req,res,next){
     const {id} = req.params
     try {
-        const newsId = await New.findByPk(id)
+        const newsId = await New.findByPk(id,{
+            
+        })
+
         console.log(newsId)
         res.send(newsId)
     } catch (error) {
@@ -30,17 +33,17 @@ async function postNews(req,res,next){
         image,
     } = req.body
     try {
-        if(!title || !subtitle || !text){
-            res.status(404).send('Faltan datos para poder crear noticia')
-        }else{
-             let insertNews = await New.create({
-                title,
-                subtitle,
-                text,
-                image,
-            })
-            res.send('Noticia Creada')
-            return insertNews
+           if(!title || !subtitle || !text){
+               res.status(404).send('Faltan datos para poder crear noticia')
+            }else{
+                let insertNews = await New.create({
+                    title,
+                    subtitle,
+                    text,
+                    image,
+                })                
+                res.send('Noticia Creada')
+                /* return insertNews */
         }
     } catch (error) {
         next(error)
