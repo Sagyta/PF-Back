@@ -25,12 +25,7 @@ async function getComment (req,res,next){
 async function getCommentId(req,res,next){
     const {id} = req.params
     try {
-        const commentsId = await Comment.findByPk(id,{
-            include: {
-                model: User,
-                attributes:['userId']
-            }
-        }) 
+        const commentsId = await Comment.findByPk(id) 
         console.log(commentsId)      
         res.send(commentsId)
     } catch (error) {
@@ -63,19 +58,6 @@ async function postComment(req,res,next){
   } catch (error) {
     next(error);
   }
-    /* try {
-        if(!comment){
-            res.status(404).send('Por favor ingrese un comentario')
-        }else{
-             let insertComment = await Comment.create({
-                comment
-            })
-            res.send('Comentario creado')
-            return insertComment
-        }
-    } catch (error) {
-        next(error)
-    } */
 }
 
 async function putComment(req,res,next){
