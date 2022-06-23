@@ -5,7 +5,7 @@ const router = Router();
 
 router.get('/', getComment)
 router.get('/:id', getCommentId)
-router.post('/comentar', postComment)
+router.post('/comentar/:newId/:userId', postComment)
 router.put('/:id', putComment)
 router.delete('/:id', deleteComment)
 module.exports = router;

@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
 			allowNull: false
 		},
     starDate: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false,
     }, 
     scheduleIn:{
