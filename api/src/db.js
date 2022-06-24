@@ -54,6 +54,9 @@ Sport.belongsToMany(User, {through:  'UserSport'});
 New.hasMany(Comment);
 Comment.belongsTo(New); 
 
+User.hasMany(New)
+New.belongsTo(User);
+
 User.hasMany(Comment);
 Comment.belongsTo(User);
 
