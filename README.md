@@ -4,12 +4,13 @@ Estos son los ENDPOINTS disponibles hasta el momento:
 
 NEWS
 - GET: http://localhost:3001/news
-- POST: http://localhost:3001/news/crear
+- GET DETALLES: http://localhost:3001/news/{id}
+- POST: http://localhost:3001/news/crear/{userId}/{sportId}
 - PUT/DELETE: http://localhost:3001/news/{id}
 
 COMENTARIOS
 - GET: http://localhost:3001/comment
-- POST: http://localhost:3001/comment/comentar
+- POST: http://localhost:3001/comment/comentar/{newId}/{userId}
 - PUT/DELETE: http://localhost:3001/comment/{ID}
 
 USERS
