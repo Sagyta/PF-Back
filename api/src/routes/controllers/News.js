@@ -10,11 +10,11 @@ async function getNews (req,res,next){
                     attributes: ['name', 'surname']
                 },
                 {
-                    model: Comment,
-                    attributes: ['comment']
-                }
+                    model: Sport,
+                    attributes: ['name']
+                },
             ],
-            attributes:['id','title', 'subtitle', 'text']
+            attributes:['id','title', 'subtitle']
         })
         res.send(newsFind)
     } catch (error) {
@@ -25,7 +25,12 @@ async function getNews (req,res,next){
 async function getNewsId(req,res,next){
     const {id} = req.params
     try {
-        const newsId = await New.findByPk(id)
+        const newsId = await New.findByPk(id,{
+            include:[{
+                model: Comment,
+                attributes: ['comment']
+            }]
+        })
         res.send(newsId)
     } catch (error) {
         next(error)
@@ -34,8 +39,9 @@ async function getNewsId(req,res,next){
 
 async function postNews(req,res,next){
     try {
-        const {userId} = req.params
+        const {userId, sportId} = req.params
         const createBy = await User.findByPk(userId)
+        const theSport= await Sport.findByPk(sportId)
 
         const {
             title,
@@ -56,8 +62,10 @@ async function postNews(req,res,next){
             title,
             subtitle,
             text,
-        })      
+        }) 
+             
         createBy.addNew(insertNews)
+        theSport.addNew(insertNews)
         res.send(insertNews)
     } catch (error) {
         next(error)
