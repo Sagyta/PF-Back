@@ -69,6 +69,12 @@ Inscription.belongsTo(Category);
 Sport.hasMany(Inscription)
 Inscription.belongsTo(Sport);
 
+Teacher.hasMany(Category)
+Category.belongsTo(Teacher);
+
+Sport.belongsToMany(Category, {through:  'CategorySport'});                      
+Category.belongsToMany(Sport, {through:  'CategorySport'});
+
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
