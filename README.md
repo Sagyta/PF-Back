@@ -33,3 +33,11 @@ PAGO CUOTA
 - PUT: http://localhost:3001/pay/:id
 - POST: http://localhost:3001/pay
 
+PROFESORES
+
+- GET: http://localhost:3001/teacher
+- GET: http://localhost:3001/teacher/:id
+- PUT: http://localhost:3001/teacher/:id
+- DELETE: http://localhost:3001/teacher/:id
+- POST: http://localhost:3001/teacher
+
