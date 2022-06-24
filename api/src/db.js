@@ -57,6 +57,9 @@ Comment.belongsTo(New);
 User.hasMany(New)
 New.belongsTo(User);
 
+New.belongsTo(Sport)
+Sport.hasMany(New);
+
 User.hasMany(Comment);
 Comment.belongsTo(User);
 
