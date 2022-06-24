@@ -21,15 +21,11 @@ async function getInscriptionId(req,res,next){
 async function postInscription(req,res,next){
     try {
         const {starDate, scheduleIn, userId } = req.body
-       /*  if(typeof ){
-            res.send(`Usted ya esta inscripto a este deporte`)
-        }else{ */
             let insertInscription= await Inscription.create({
                 starDate,
                 scheduleIn,
             })
             res.send('Te has registrado correctamente')
-        /* } */
     } catch (error) {
       next(error)  
     }
