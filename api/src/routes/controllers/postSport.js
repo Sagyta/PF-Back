@@ -12,6 +12,4 @@ async function postSport (req,res){
         res.send({msg:'Añadido correctamente'});
     }
 } 
-
-
 module.exports = postSport;
