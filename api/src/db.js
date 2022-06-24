@@ -42,6 +42,7 @@ const {
   Pay,
   Teacher,
   Inscription,
+  CategorySport,
 } = sequelize.models;
 
 // Aca vendrian las relaciones
@@ -78,8 +79,17 @@ Inscription.belongsTo(Sport);
 Teacher.hasMany(Category)
 Category.belongsTo(Teacher);
 
-Sport.belongsToMany(Category, {through:  'CategorySport'});                      
-Category.belongsToMany(Sport, {through:  'CategorySport'});
+Sport.hasMany(CategorySport)
+CategorySport.belongsTo(Sport);
+
+Category.hasMany(CategorySport)
+CategorySport.belongsTo(Category);
+
+Teacher.hasMany(CategorySport)
+CategorySport.belongsTo(Teacher);
+
+/* Sport.belongsToMany(Category, {through:  'CategorySports'});                      
+Category.belongsToMany(Sport, {through:  'CategorySports'}); */
 
 
 
