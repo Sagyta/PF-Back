@@ -23,7 +23,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING
     },
     message: {
-        type: DataTypes.STRING
+        type: DataTypes.TEXT
     } 
   },
   {
