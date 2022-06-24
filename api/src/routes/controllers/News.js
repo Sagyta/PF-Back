@@ -1,11 +1,22 @@
-const {New, Comment} = require('../../db')
+const {New, Comment, User, Sport} = require('../../db')
 
 
 async function getNews (req,res,next){
     try {
-        const newsFind = await New.findAll()
+        const newsFind = await New.findAll({
+            include: [
+                {
+                    model: User,
+                    attributes: ['name', 'surname']
+                },
+                {
+                    model: Comment,
+                    attributes: ['comment']
+                }
+            ],
+            attributes:['id','title', 'subtitle', 'text']
+        })
         res.send(newsFind)
-
     } catch (error) {
         next(error)
     }
@@ -14,11 +25,7 @@ async function getNews (req,res,next){
 async function getNewsId(req,res,next){
     const {id} = req.params
     try {
-        const newsId = await New.findByPk(id,{
-            
-        })
-
-        console.log(newsId)
+        const newsId = await New.findByPk(id)
         res.send(newsId)
     } catch (error) {
         next(error)
@@ -26,25 +33,32 @@ async function getNewsId(req,res,next){
 }
 
 async function postNews(req,res,next){
-    const {
-        title,
-        subtitle,
-        text,
-        image,
-    } = req.body
     try {
-           if(!title || !subtitle || !text){
-               res.status(404).send('Faltan datos para poder crear noticia')
-            }else{
-                let insertNews = await New.create({
-                    title,
-                    subtitle,
-                    text,
-                    image,
-                })                
-                res.send('Noticia Creada')
-                /* return insertNews */
-        }
+        const {userId} = req.params
+        const createBy = await User.findByPk(userId)
+
+        const {
+            title,
+            subtitle,
+            text,
+            image,
+        } = req.body
+
+        const exist = await New.findAll({
+            where:{
+                title
+            }
+        })
+        if(exist.length) return res.status(400)
+        .send('Rechazado, esa noticia ya existe en la base de datos')
+
+        const insertNews = await New.create({
+            title,
+            subtitle,
+            text,
+        })      
+        createBy.addNew(insertNews)
+        res.send(insertNews)
     } catch (error) {
         next(error)
     }
