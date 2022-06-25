@@ -2,7 +2,8 @@ const { User } = require("../db");
 var express = require("express");
 var router = express.Router();
 
-router.delete('/:id',async(req,res)=>{
+router.delete('/:id',async(req,res,next)=>{
+    try{
     let regexUuid = /[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}/;
 
     let {id} = req.params;
@@ -17,6 +18,9 @@ router.delete('/:id',async(req,res)=>{
         await usuario.destroy();
         return res.send({msg:'Usuario Eliminado exitosamente'});
     }
+ }
+ }catch(error){
+     next(error);
  }
 })
 
