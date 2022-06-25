@@ -1,10 +1,10 @@
 const { Router } = require('express');
-const { postCategorySport, getCategorySport } = require('./controllers/CategorySports');
+const { postCategorySport, getCategorySport, getCategorySportId } = require('./controllers/CategorySports');
 
 const router = Router();
 
 router.get('/', getCategorySport)
-/*router.get('/:id', getCategoryId) */
+router.get('/:id', getCategorySportId)
 router.post('/', postCategorySport)
 /* router.put('/:id', putCategory)
 router.delete('/:id', deleteCategory) */
