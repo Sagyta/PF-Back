@@ -7,7 +7,7 @@ const router = Router();
 
 router.get('/', getNews)
 router.get('/:id', getNewsId)
-router.post('/crear/:userId/:sportId', postNews)
+router.post('/crear/:userId', postNews)
 router.put('/:id', putNews)
 router.delete('/:id', deleteNews)
 module.exports = router;

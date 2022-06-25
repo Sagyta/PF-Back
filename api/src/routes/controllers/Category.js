@@ -1,8 +1,14 @@
-const {Category} = require('../../db')
+const {Category, Teacher, Sport} = require('../../db')
 
 async function getCategory (req,res,next){
     try {
-        const category = await Category.findAll()
+        const category = await Category.findAll({
+            include:[{
+                model: Teacher,
+                attributes: ['name', 'surname']
+            }],
+            attributes: {exclude: ['teacherId']}
+        })
         res.send(category)
 
     } catch (error) {
@@ -13,7 +19,13 @@ async function getCategory (req,res,next){
 async function getCategoryId(req,res,next){
     const {id} = req.params
     try {
-        const categoryId = await Category.findByPk(id)
+        const categoryId = await Category.findByPk(id,{
+            include:[{
+                model: Teacher,
+                attributes: ['name', 'surname']
+            }],
+            attributes: {exclude: ['teacherId']}
+        })
         res.send(categoryId)
     } catch (error) {
         next(error)
@@ -22,14 +34,23 @@ async function getCategoryId(req,res,next){
 
 async function postCategory(req,res,next){
     const {
-        name
+        name,teacherId
     } = req.body
     try {
+        const exist = await Category.findAll({
+            where:{
+                name
+            }
+        })
+        if(exist.length) return res.status(400)
+        .send('Rechazado, esa categoria ya existe en la base de datos');
+
         if(!name){
             res.status(404).send('Debe ingresar nombre de categoria')
         }else{
              let newCategory = await Category.create({
-                name
+                name,
+                teacherId,
             })
             res.send('Categoría Creada')
             return newCategory

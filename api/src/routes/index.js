@@ -17,6 +17,7 @@ const pay = require('./Pay')
 const role = require('./role')
 const inscriptionRoute = require('./Inscriptions');
 const teacher = require('./Teacher')
+const categorySport = require('./CategorySports')
 
 const router = Router();
 
@@ -34,8 +35,8 @@ router.use('/comment', commentRoute)
 router.use('/category', category)
 router.use('/pay', pay)
 router.use('/inscription', inscriptionRoute)
-
 router.use('/role', role)
 router.use('/teacher', teacher)
+router.use('/categorysport', categorySport)
 
 module.exports = router;
