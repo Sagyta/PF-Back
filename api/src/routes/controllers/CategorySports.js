@@ -100,26 +100,26 @@ async function postCategorySport(req,res,next){
     }catch(error){
         next(error)
     }
-}
+}*/
 
 async function deleteCategorySport(req,res,next){
     const {id} = req.params
     try {
-        const delCategory = await Category.findByPk(id)
+        const delCategory = await CategorySport.findByPk(id)
         if(delCategory){
             await delCategory.destroy()
-            return res.send('Categoría eliminada con éxito')
+            return res.send('Categoría Sport eliminada con éxito')
         }
-        res.status(404).send('Categoría no encontrada')
+        res.status(404).send('Categoría Sport no encontrada')
     } catch (error) {
         next(error)
     }
-} */
+} 
 
 module.exports = {
      getCategorySport,
    getCategorySportId,
     postCategorySport,
-  /*   putCategorySport,
-    deleteCategorySport, */
+  /*   putCategorySport,*/
+    deleteCategorySport, 
 }
