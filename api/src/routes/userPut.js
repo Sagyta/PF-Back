@@ -3,31 +3,21 @@ var express = require("express");
 var router = express.Router();
 
 router.put("/:id", async(req,res,next)=>{
-    try{
-        const { id }= req.params
-        let updateUser = await User.findOne({
-            where:{
-                id:id
-            }
-        });
-        await updateUser.update({
-            name:req.body.name,
-            surname:req.body.surname,
-            address: req.body.address,
-            phone: req.body.phone,
-            email: req.body.email,
-            dni: req.body.dni,
-            isOlder: req.body.isOlder,
-            username: req.body.username,
-            password: req.body.password,
-            tutorName: req.body.tutorName,
-            tutorPhone: req.body.tutorPhone,
-            tutorEmail: req.body.tutorEmail,
-        })
-        res.status(200).send(updateUser)
-    }catch(error){
-        next(error)
-    }
+    let regexUuid = /[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}/;
+   let {id} = req.params;
+   if(!regexUuid.test(id)){
+       return res.send({msg: 'ingrese un ID valido'});
+   }else{
+   const data = await User.findOne({where: {id:id}});
+   if(data === null){
+       return res.send({msg: 'Lo siento pero no se encuentra ese usuario'});
+   }else {
+  
+       data.set(req.body);
+       await data.save();
+       res.send(data);
+   }
+ }
 })
 
 module.exports = router;

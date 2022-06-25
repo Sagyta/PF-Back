@@ -63,8 +63,8 @@ Sport.hasMany(New);
 User.hasMany(Comment);
 Comment.belongsTo(User);
 
-Role.hasMany(User);
-User.belongsTo(Role);
+Role.hasMany(User, {foreignKey: 'roleId', sourceKey: 'id'});
+User.belongsTo(Role, {foreignKey: 'roleId',targetKey: 'id'});
 
 User.hasMany(Inscription)
 Inscription.belongsTo(User);
