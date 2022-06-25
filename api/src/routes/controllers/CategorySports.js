@@ -27,21 +27,31 @@ const {Category, Teacher, CategorySport, Sport} = require('../../db')
     }
 }
 
-/*async function getCategorySportId(req,res,next){
+async function getCategorySportId(req,res,next){
     const {id} = req.params
     try {
-        const categoryId = await Category.findByPk(id,{
-            include:[{
+        const categoryId = await CategorySport.findByPk(id,{
+            include:[
+                {
                 model: Teacher,
                 attributes: ['name', 'surname']
-            }],
-            attributes: {exclude: ['teacherId']}
+                },
+                {
+                model: Category,
+                attributes: ['name']
+                },
+                {
+                model: Sport,
+                attributes: ['name']
+                },
+        ],
+                 attributes: {exclude: ['teacherId', 'sportId', 'categoryId']}
         })
         res.send(categoryId)
     } catch (error) {
         next(error)
     }
-} */
+}
 
 async function postCategorySport(req,res,next){
     const {
@@ -108,7 +118,7 @@ async function deleteCategorySport(req,res,next){
 
 module.exports = {
      getCategorySport,
-   /* getCategorySportId, */
+   getCategorySportId,
     postCategorySport,
   /*   putCategorySport,
     deleteCategorySport, */

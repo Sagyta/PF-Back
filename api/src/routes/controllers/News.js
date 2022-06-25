@@ -26,10 +26,21 @@ async function getNewsId(req,res,next){
     const {id} = req.params
     try {
         const newsId = await New.findByPk(id,{
-            include:[{
+            include:[
+                {
+                model: User,
+                attributes: ['name', 'surname']
+                },
+                {
+                    model: Sport,
+                    attributes: ['name']
+                },
+                {
                 model: Comment,
                 attributes: ['comment']
-            }]
+                },
+            ],
+            attributes: {exclude: ['sportId', 'userId']}
         })
         res.send(newsId)
     } catch (error) {
@@ -39,15 +50,15 @@ async function getNewsId(req,res,next){
 
 async function postNews(req,res,next){
     try {
-        const {userId, sportId} = req.params
+        const {userId} = req.params
         const createBy = await User.findByPk(userId)
-        const theSport= await Sport.findByPk(sportId)
 
         const {
             title,
             subtitle,
             text,
             image,
+            sportId,
         } = req.body
 
         const exist = await New.findAll({
@@ -62,10 +73,10 @@ async function postNews(req,res,next){
             title,
             subtitle,
             text,
+            sportId,
         }) 
              
         createBy.addNew(insertNews)
-        theSport.addNew(insertNews)
         res.send(insertNews)
     } catch (error) {
         next(error)
