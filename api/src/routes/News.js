@@ -7,6 +7,8 @@ const router = Router();
 
 router.get('/', getNews)
 router.get('/:id', getNewsId)
+router.get('/?title={title}')
+router.get('/?name={name}')
 router.post('/crear/:userId', postNews)
 router.put('/:id', putNews)
 router.delete('/:id', deleteNews)

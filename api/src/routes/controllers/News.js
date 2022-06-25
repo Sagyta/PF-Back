@@ -3,6 +3,8 @@ const {New, Comment, User, Sport} = require('../../db')
 
 async function getNews (req,res,next){
     try {
+        const {title, name} = req.query
+                
         const newsFind = await New.findAll({
             include: [
                 {
@@ -16,6 +18,19 @@ async function getNews (req,res,next){
             ],
             attributes:['id','title', 'subtitle']
         })
+        if(title){
+            console.log(title)
+            let findTitle= newsFind.filter(e=>e.title.toLowerCase().includes(title.toLowerCase()))
+            if(findTitle.length) return res.send(findTitle)
+            else return res.status(404).send('No hay noticias que contengan esta palabra en el título')
+        }
+        if(name){
+            console.log(name)
+            let findSport= newsFind.filter(e=>e.sport.name.toLowerCase() === name.toLowerCase())
+            console.log(findSport)
+            if(findSport.length) return res.send(findSport)
+            else return res.status(404).send('No se han encontrado noticias relacionadas a este deporte')
+        }
         res.send(newsFind)
     } catch (error) {
         next(error)

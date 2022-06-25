@@ -5,6 +5,8 @@ Estos son los ENDPOINTS disponibles hasta el momento:
 NEWS
 - GET: http://localhost:3001/news
 - GET DETALLES: http://localhost:3001/news/{id}
+- GET: http://localhost:3001/news?title={title} (buscar por titulo)
+- GET: http://localhost:3001/news?name={name} (buscar por deporte)
 - POST: http://localhost:3001/news/crear/{userId}
 - PUT/DELETE: http://localhost:3001/news/{id}
 
@@ -40,4 +42,9 @@ PROFESORES
 - PUT: http://localhost:3001/teacher/{id}
 - DELETE: http://localhost:3001/teacher/{id}
 - POST: http://localhost:3001/teacher
+
+CATEGORY - SPORT
+
+- GET / POST: http://localhost:3001/categorysport
+- GET DETALLE / DELETE / PUT: http://localhost:3001/categorysport/{id}
 

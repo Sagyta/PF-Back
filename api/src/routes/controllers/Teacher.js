@@ -34,6 +34,14 @@ async function postTeacher(req,res,next){
         name, surname, dni, address, phone, email
     } = req.body
     try {
+        const exist= await Teacher.findAll({
+            where:{
+                dni,
+                email,
+            }
+        })
+        if(exist.length) return res.status(400)
+        .send('Rechazado, ese profesor ya esta ingresado en la base de datos');
         if(!name || !surname || !dni || !address || ! phone || !email){
             res.status(404).send('Debe ingresar todos los datos necesarios')
         }else{
