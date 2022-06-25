@@ -91,7 +91,7 @@ async function postCategorySport(req,res,next){
     }
 }
 
-/* async function putCategorySport(req,res,next){
+async function putCategorySport(req,res,next){
     try{
         const { id }= req.params
         let updateCategory = await Category.findOne({where:{id:id}})
@@ -100,7 +100,7 @@ async function postCategorySport(req,res,next){
     }catch(error){
         next(error)
     }
-}*/
+}
 
 async function deleteCategorySport(req,res,next){
     const {id} = req.params
@@ -117,9 +117,9 @@ async function deleteCategorySport(req,res,next){
 } 
 
 module.exports = {
-     getCategorySport,
-   getCategorySportId,
+    getCategorySport,
+    getCategorySportId,
     postCategorySport,
-  /*   putCategorySport,*/
+    putCategorySport,
     deleteCategorySport, 
 }
