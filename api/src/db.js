@@ -43,6 +43,8 @@ const {
   Teacher,
   Inscription,
   CategorySport,
+  Album,
+  Photo,
 } = sequelize.models;
 
 // Aca vendrian las relaciones
@@ -88,10 +90,8 @@ CategorySport.belongsTo(Category);
 Teacher.hasMany(CategorySport)
 CategorySport.belongsTo(Teacher);
 
-/* Sport.belongsToMany(Category, {through:  'CategorySports'});                      
-Category.belongsToMany(Sport, {through:  'CategorySports'}); */
-
-
+Album.hasMany(Photo)
+Photo.belongsTo(Album);
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
