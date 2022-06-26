@@ -78,8 +78,8 @@ Inscription.belongsTo(Category);
 Sport.hasMany(Inscription)
 Inscription.belongsTo(Sport);
 
-Teacher.hasMany(Category)
-Category.belongsTo(Teacher);
+/* Teacher.hasMany(Category)
+Category.belongsTo(Teacher); */
 
 Sport.hasMany(CategorySport)
 CategorySport.belongsTo(Sport);
