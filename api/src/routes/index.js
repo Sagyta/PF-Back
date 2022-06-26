@@ -20,7 +20,7 @@ const teacher = require('./Teacher')
 const categorySport = require('./CategorySports')
 const album = require('./Albums')
 const photos = require('./Photos')
-
+const calendar = require('./calendar')
 const router = Router();
 
 //router.use('/', noticiasRoute)
@@ -42,5 +42,7 @@ router.use('/teacher', teacher)
 router.use('/categorysport', categorySport)
 router.use('/album', album)
 router.use('/photo', photos)
+router.use('/calendar', calendar)
+
 
 module.exports = router;

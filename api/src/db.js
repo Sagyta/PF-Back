@@ -45,6 +45,7 @@ const {
   CategorySport,
   Album,
   Photo,
+  Calendar
 } = sequelize.models;
 
 // Aca vendrian las relaciones
@@ -92,6 +93,9 @@ CategorySport.belongsTo(Teacher);
 
 Album.hasMany(Photo)
 Photo.belongsTo(Album);
+
+Sport.hasMany(Calendar, {foreignKey: 'calendarId', sourceKey: 'id'});
+Calendar.belongsTo(Sport, {foreignKey: 'calendarId', targetKey: 'id'});
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
