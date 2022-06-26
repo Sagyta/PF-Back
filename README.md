@@ -12,12 +12,13 @@ NEWS
 
 COMENTARIOS
 - GET: http://localhost:3001/comment
+- GET DETALLES: http://localhost:3001/comment/{id}
 - POST: http://localhost:3001/comment/comentar/{newId}/{userId}
 - PUT/DELETE: http://localhost:3001/comment/{id}
 
 USERS
 - GET: http://localhost:3001/user
-- GET: http://localhost:3001/user/{id}
+- GET DETALLES: http://localhost:3001/user/{id}
 - PUT: http://localhost:3001/user/{id}
 - DELETE: http://localhost:3001/user/{id}
 - POST: http://localhost:3001/user
@@ -31,7 +32,7 @@ CONTACTO
 PAGO CUOTA
 
 - GET: http://localhost:3001/pay
-- GET: http://localhost:3001/pay/{id}
+- GET DETALLE: http://localhost:3001/pay/{id}
 - PUT: http://localhost:3001/pay/{id}
 - POST: http://localhost:3001/pay
 
@@ -52,7 +53,12 @@ ALBUM
 
 - GET / POST: http://localhost:3001/album
 - GET DETALLES: http://localhost:3001/album/{id}
+- PUT: http://localhost:3001/album/{id}
+- DELETE: http://localhost:3001/album/{id}
 
 PHOTO
 
-- GET / POST: http://localhost:3001/photo
+- GET: http://localhost:3001/photo 
+- GET DETALLES: http://localhost:3001/photo/{id}
+- POST: http://localhost:3001/photo/{albumId}
+- PUT / DELETE: http://localhost:3001/photo/{id}

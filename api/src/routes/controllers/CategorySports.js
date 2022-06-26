@@ -64,14 +64,14 @@ async function postCategorySport(req,res,next){
                 start,
                 finish,
                 sportId,
-                categoryId
+                categoryId,
             }
         })
         if(exist.length) return res.status(400)
         .send('Rechazado, ese dia y horarios estan ya reservados para ese deporte');
 
-        if(!sportId){
-            res.status(404).send('Debe ingresar un deporte')
+        if(!sportId || !categoryId || !teacherId || !day || !start || !finish){
+            res.status(404).send('Debe ingresar todos los datos')
         }else{
              let newCategory = await CategorySport.create({
                 day,
@@ -94,9 +94,18 @@ async function postCategorySport(req,res,next){
 async function putCategorySport(req,res,next){
     try{
         const { id }= req.params
-        let updateCategory = await Category.findOne({where:{id:id}})
-        await updateCategory.update({name: req.body.name})
-        res.status(200).send(updateCategory)
+        let updateCategorySport = await CategorySport.findByPk(id)
+        await updateCategorySport.update({
+            day: req.body.day,
+            start: req.body.start,
+            finish:req.body.finish,
+            description:req.body.description,
+            fee:req.body.fee,
+            categoryId:req.body.categoryId,
+            sportId:req.body.sportId,
+            teacherId:req.body.teacherId,
+        })
+        res.status(200).send(updateCategorySport)
     }catch(error){
         next(error)
     }
