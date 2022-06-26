@@ -1,14 +1,8 @@
-const {Category, Teacher, Sport} = require('../../db')
+const {Category} = require('../../db')
 
 async function getCategory (req,res,next){
     try {
-        const category = await Category.findAll({
-            include:[{
-                model: Teacher,
-                attributes: ['name', 'surname']
-            }],
-            attributes: {exclude: ['teacherId']}
-        })
+        const category = await Category.findAll()
         res.send(category)
 
     } catch (error) {
@@ -19,13 +13,7 @@ async function getCategory (req,res,next){
 async function getCategoryId(req,res,next){
     const {id} = req.params
     try {
-        const categoryId = await Category.findByPk(id,{
-            include:[{
-                model: Teacher,
-                attributes: ['name', 'surname']
-            }],
-            attributes: {exclude: ['teacherId']}
-        })
+        const categoryId = await Category.findByPk(id)
         res.send(categoryId)
     } catch (error) {
         next(error)
@@ -33,9 +21,7 @@ async function getCategoryId(req,res,next){
 }
 
 async function postCategory(req,res,next){
-    const {
-        name,teacherId
-    } = req.body
+    const {name} = req.body
     try {
         const exist = await Category.findAll({
             where:{
@@ -50,7 +36,6 @@ async function postCategory(req,res,next){
         }else{
              let newCategory = await Category.create({
                 name,
-                teacherId,
             })
             res.send('Categoría Creada')
             return newCategory
@@ -63,7 +48,7 @@ async function postCategory(req,res,next){
 async function putCategory(req,res,next){
     try{
         const { id }= req.params
-        let updateCategory = await Category.findOne({where:{id:id}})
+        let updateCategory = await Category.findByPk(id)
         await updateCategory.update({name: req.body.name})
         res.status(200).send(updateCategory)
     }catch(error){
