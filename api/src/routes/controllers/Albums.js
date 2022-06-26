@@ -3,10 +3,6 @@ const {Album, Photo} = require('../../db')
 async function getAlbum (req,res,next){
     try {
         const album = await Album.findAll({
-            include:[{
-                model: Photo,
-                attributes: ['name', 'image']
-            }],
             attributes: {exclude: ['albumId']}
         })
         res.send(album)
@@ -16,21 +12,21 @@ async function getAlbum (req,res,next){
     }
 }
 
-/* async function getCategoryId(req,res,next){
+async function getAlbumId(req,res,next){
     const {id} = req.params
     try {
-        const categoryId = await AlbumPhoto.findByPk(id,{
+        const albumId = await Album.findByPk(id,{
             include:[{
-                model: Teacher,
-                attributes: ['name', 'surname']
+                model: Photo,
+                attributes: ['name', 'image']
             }],
-            attributes: {exclude: ['teacherId']}
+            attributes: {exclude: ['albumId', 'name', 'description']}
         })
-        res.send(categoryId)
+        res.send(albumId)
     } catch (error) {
         next(error)
     }
-}*/
+}
 
 async function postAlbum(req,res,next){
     const {
@@ -86,7 +82,7 @@ async function deleteCategory(req,res,next){
 
 module.exports = {
     getAlbum,
-    /* getCategoryId,*/
+    getAlbumId,
     postAlbum,
    /* putCategory,
     deleteCategory, */
