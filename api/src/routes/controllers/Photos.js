@@ -16,21 +16,21 @@ async function getPhoto (req,res,next){
     }
 }
 
-/* async function getCategoryId(req,res,next){
+async function getPhotoId(req,res,next){
     const {id} = req.params
     try {
-        const categoryId = await AlbumPhoto.findByPk(id,{
+        const photoId = await Photo.findByPk(id,{
             include:[{
-                model: Teacher,
-                attributes: ['name', 'surname']
+                model: Album,
+                attributes: ['name']
             }],
-            attributes: {exclude: ['teacherId']}
+            attributes: {exclude: ['albumId']}
         })
-        res.send(categoryId)
+        res.send(photoId)
     } catch (error) {
         next(error)
     }
-}*/
+}
 
 async function postPhoto(req,res,next){
     const { name, image } = req.body
@@ -60,35 +60,38 @@ async function postPhoto(req,res,next){
     }
 }
 
-/*async function putCategory(req,res,next){
+async function putPhoto(req,res,next){
     try{
         const { id }= req.params
-        let updateCategory = await Category.findOne({where:{id:id}})
-        await updateCategory.update({name: req.body.name})
-        res.status(200).send(updateCategory)
+        let updatePhoto = await Photo.findByPk(id)
+        await updatePhoto.update({
+            name: req.body.name,
+            image: req.body.image,
+        })
+        res.status(200).send(updatePhoto)
     }catch(error){
         next(error)
     }
 }
 
-async function deleteCategory(req,res,next){
+async function deletePhoto(req,res,next){
     const {id} = req.params
     try {
-        const delCategory = await Category.findByPk(id)
-        if(delCategory){
-            await delCategory.destroy()
-            return res.send('Categoría eliminada con éxito')
+        const delPhoto = await Photo.findByPk(id)
+        if(delPhoto){
+            await delPhoto.destroy()
+            return res.send('Foto eliminada con éxito')
         }
-        res.status(404).send('Categoría no encontrada')
+        res.status(404).send('Foto no encontrada')
     } catch (error) {
         next(error)
     }
-} */
+} 
 
 module.exports = {
     getPhoto,
-    /* getCategoryId,*/
+    getPhotoId,
     postPhoto,
-   /* putCategory,
-    deleteCategory, */
+    putPhoto,
+    deletePhoto, 
 }
