@@ -47,7 +47,7 @@ async function postComment(req,res,next){
     createdInNew.addComment(newComment);
 
     obj.id = newComment.dataValues.id;
-    obj.comment = req.body.comment;
+    obj.comment = comment;
     obj.user = {
       name: createdBy.dataValues.name,
       id: createdBy.dataValues.id,

@@ -1,6 +1,7 @@
 const { Contact } = require("../db");
 var express = require("express");
 var router = express.Router();
+const emailer = require('../emailer')
 
 router.post("/", async(req,res,next)=>{
     let { email,name,surname,phone,message }= req.body
@@ -16,6 +17,7 @@ router.post("/", async(req,res,next)=>{
             phone,
             message
         })
+        emailer.sendMail(newContact)
         return res.send(newContact)
     }catch(error){
         next(error)

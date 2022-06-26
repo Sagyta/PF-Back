@@ -5,17 +5,20 @@ Estos son los ENDPOINTS disponibles hasta el momento:
 NEWS
 - GET: http://localhost:3001/news
 - GET DETALLES: http://localhost:3001/news/{id}
+- GET: http://localhost:3001/news?title={title} (buscar por titulo)
+- GET: http://localhost:3001/news?name={name} (buscar por deporte)
 - POST: http://localhost:3001/news/crear/{userId}
 - PUT/DELETE: http://localhost:3001/news/{id}
 
 COMENTARIOS
 - GET: http://localhost:3001/comment
+- GET DETALLES: http://localhost:3001/comment/{id}
 - POST: http://localhost:3001/comment/comentar/{newId}/{userId}
 - PUT/DELETE: http://localhost:3001/comment/{id}
 
 USERS
 - GET: http://localhost:3001/user
-- GET: http://localhost:3001/user/{id}
+- GET DETALLES: http://localhost:3001/user/{id}
 - PUT: http://localhost:3001/user/{id}
 - DELETE: http://localhost:3001/user/{id}
 - POST: http://localhost:3001/user
@@ -29,7 +32,7 @@ CONTACTO
 PAGO CUOTA
 
 - GET: http://localhost:3001/pay
-- GET: http://localhost:3001/pay/{id}
+- GET DETALLE: http://localhost:3001/pay/{id}
 - PUT: http://localhost:3001/pay/{id}
 - POST: http://localhost:3001/pay
 
@@ -41,3 +44,21 @@ PROFESORES
 - DELETE: http://localhost:3001/teacher/{id}
 - POST: http://localhost:3001/teacher
 
+CATEGORY - SPORT
+
+- GET / POST: http://localhost:3001/categorysport
+- GET DETALLE / DELETE / PUT: http://localhost:3001/categorysport/{id}
+
+ALBUM
+
+- GET / POST: http://localhost:3001/album
+- GET DETALLES: http://localhost:3001/album/{id}
+- PUT: http://localhost:3001/album/{id}
+- DELETE: http://localhost:3001/album/{id}
+
+PHOTO
+
+- GET: http://localhost:3001/photo 
+- GET DETALLES: http://localhost:3001/photo/{id}
+- POST: http://localhost:3001/photo/{albumId}
+- PUT / DELETE: http://localhost:3001/photo/{id}
