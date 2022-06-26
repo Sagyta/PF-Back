@@ -51,4 +51,8 @@ CATEGORY - SPORT
 ALBUM
 
 - GET / POST: http://localhost:3001/album
+- GET DETALLES: http://localhost:3001/album/{id}
 
+PHOTO
+
+- GET / POST: http://localhost:3001/photo
