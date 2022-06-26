@@ -55,35 +55,39 @@ async function postAlbum(req,res,next){
     }
 }
 
-/*async function putCategory(req,res,next){
+async function putAlbum(req,res,next){
     try{
         const { id }= req.params
-        let updateCategory = await Category.findOne({where:{id:id}})
-        await updateCategory.update({name: req.body.name})
-        res.status(200).send(updateCategory)
+        let updateAlbum = await Album.findByPk(id)
+        await updateAlbum.update({
+            name: req.body.name,
+            description: req.body.description
+        })
+        res.status(200).send('Se ha actualizado el album')
+        return updateAlbum
     }catch(error){
         next(error)
     }
 }
 
-async function deleteCategory(req,res,next){
+async function deleteAlbum(req,res,next){
     const {id} = req.params
     try {
-        const delCategory = await Category.findByPk(id)
-        if(delCategory){
-            await delCategory.destroy()
-            return res.send('Categoría eliminada con éxito')
+        const deleteAlbum = await Album.findByPk(id)
+        if(deleteAlbum){
+            await deleteAlbum.destroy()
+            return res.send('Album eliminado con éxito')
         }
-        res.status(404).send('Categoría no encontrada')
+        res.status(404).send('Album no encontrado')
     } catch (error) {
         next(error)
     }
-} */
+} 
 
 module.exports = {
     getAlbum,
     getAlbumId,
     postAlbum,
-   /* putCategory,
-    deleteCategory, */
+    putAlbum,
+    deleteAlbum,
 }
