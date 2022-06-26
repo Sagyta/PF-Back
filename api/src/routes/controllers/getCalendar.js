@@ -10,11 +10,13 @@ async function getCalendar(req,res,next){
     let inf = datos.map(e => {
         return {
             id: e.id,
+            title: e.title,
             name: e.sport.name,
-            horaInicio: e.horaInicio,
-            horaFinalizacion: e.horaFinalizacion,
-            fechaInicio: e.fechaInicio,
-            dias: e.dias
+            startTime: e.startTime,
+            endTime: e.endTime,
+            startRecur: e.startRecur,
+            endRecur: e.endRecur,
+            daysOfWeek: e.daysOfWeek
         }
     })
     return res.send(inf); 
@@ -32,20 +34,23 @@ async function getIdCalendar(req,res,next){
     let {id} = req.params;
     
     if(regexUuid.test(id)){
-        const datos = await Calendar.findOne({where:{id:id}, include: {
+        const e = await Calendar.findOne({where:{id:id}, include: {
             model: Sport,
             attributes: ['name']
         }});
 
-        if(datos === null){
+        if(e === null){
             return res.send({msg: 'No existe calendario con ese id'});
         }else {
             let inf =  {
-                    name: datos.sport.name,
-                    horaInicio: datos.horaInicio,
-                    horaFinalizacion: datos.horaFinalizacion,
-                    fechaInicio: datos.fechaInicio,
-                    dias: datos.dias
+                id: e.id,
+                title: e.title,
+                name: e.sport.name,
+                startTime: e.startTime,
+                endTime: e.endTime,
+                startRecur: e.startRecur,
+                endRecur: e.endRecur,
+                daysOfWeek: e.daysOfWeek
                 }
 
             res.send(inf);           
