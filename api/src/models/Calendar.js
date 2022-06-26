@@ -7,23 +7,27 @@ module.exports = (sequelize)=> {
 			defaultValue: DataTypes.UUIDV4,
 			primaryKey: true,
 		},
-        horaInicio: {
+        title: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        horaFinalizacion:{
+        startTime: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        fechaInicio: {
+        endTime:{
             type: DataTypes.STRING,
             allowNull: false
         },
-        fechaActualizacion: {
+        startRecur: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        dias: {
+        endRecur: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        daysOfWeek: {
             type: DataTypes.ARRAY(DataTypes.INTEGER),
             allowNull: false
         }
