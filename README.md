@@ -48,3 +48,7 @@ CATEGORY - SPORT
 - GET / POST: http://localhost:3001/categorysport
 - GET DETALLE / DELETE / PUT: http://localhost:3001/categorysport/{id}
 
+ALBUM
+
+- GET / POST: http://localhost:3001/album
+
