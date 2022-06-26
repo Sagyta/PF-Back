@@ -19,6 +19,7 @@ const inscriptionRoute = require('./Inscriptions');
 const teacher = require('./Teacher')
 const categorySport = require('./CategorySports')
 const album = require('./Albums')
+const photos = require('./Photos')
 
 const router = Router();
 
@@ -40,5 +41,6 @@ router.use('/role', role)
 router.use('/teacher', teacher)
 router.use('/categorysport', categorySport)
 router.use('/album', album)
+router.use('/photo', photos)
 
 module.exports = router;
