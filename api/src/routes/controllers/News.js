@@ -52,7 +52,7 @@ async function getNewsId(req,res,next){
                 },
                 {
                 model: Comment,
-                attributes: ['comment']
+                attributes: ['id','comment']
                 },
             ],
             attributes: {exclude: ['sportId', 'userId']}
