@@ -98,12 +98,12 @@ async function putCategorySport(req,res,next){
         await updateCategorySport.update({
             day: req.body.day,
             start: req.body.start,
-            finish:req.body.finish,
-            description:req.body.description,
-            fee:req.body.fee,
-            categoryId:req.body.categoryId,
-            sportId:req.body.sportId,
-            teacherId:req.body.teacherId,
+            finish: req.body.finish,
+            description: req.body.description,
+            fee: req.body.fee,
+            categoryId: req.body.categoryId,
+            sportId: req.body.sportId,
+            teacherId: req.body.teacherId,
         })
         res.status(200).send(updateCategorySport)
     }catch(error){

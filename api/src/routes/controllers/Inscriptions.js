@@ -38,13 +38,41 @@ async function getInscription (req,res,next){
     }
 }
 
-/* async function getInscriptionId(req,res,next){
+ async function getInscriptionId(req,res,next){
     try {
-        
+        const {id} = req.params
+        const inscriptionId = await Inscription.findByPk(id,{
+            include: [
+                {
+                model: User,
+                attributes: ['name','surname']
+                },
+                {
+                model: CategorySport,
+                attributes: ['day','start','finish', 'fee'], 
+                include:[
+                    {
+                        model: Sport,
+                        attributes: ['name']
+                    },
+                    {
+                        model:Category,
+                        attributes: ['name']
+                    },
+                    {
+                        model: Teacher,
+                        attributes: ['name', 'surname']
+                    }
+                ]
+                },
+            ],
+            attributes: {exclude: ['userId', 'CategorySportId', 'sportId', 'categoryId']}
+        })
+        res.send(inscriptionId)
     } catch (error) {
       next(error)  
     }
-} */
+} 
 
 async function postInscription(req,res,next){
     try {
@@ -61,13 +89,19 @@ async function postInscription(req,res,next){
     }
 }
 
-/* async function putInscription(req,res,next){
+ async function putInscription(req,res,next){
     try {
-        
+        const { id }= req.params
+        const {CategorySportId} = req.body
+        let updateInscription = await Inscription.findByPk(id)
+        await updateInscription.update({
+            CategorySportId,
+        })
+        res.status(200).send(updateInscription)
     } catch (error) {
       next(error)  
     }
-} */
+} 
 
 /* async function deleteInscription(req,res,next){
     try {
@@ -79,8 +113,8 @@ async function postInscription(req,res,next){
 
 module.exports = {
     getInscription,
-   /*  getInscriptionId, */
+    getInscriptionId, 
     postInscription,
-    /* putInscription, */
+    putInscription, 
     /* deleteInscription, */
 }
