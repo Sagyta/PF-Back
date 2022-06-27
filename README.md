@@ -29,20 +29,25 @@ CONTACTO
 - GET: http://localhost:3001/contact
 - DELETE: http://localhost:3001/contact/{id}
 
-PAGO CUOTA
+PAY (pago cuota socio)
 
 - GET: http://localhost:3001/pay
 - GET DETALLE: http://localhost:3001/pay/{id}
 - PUT: http://localhost:3001/pay/{id}
 - POST: http://localhost:3001/pay
 
-PROFESORES
+TEACHER
 
 - GET: http://localhost:3001/teacher
 - GET: http://localhost:3001/teacher/{id}
 - PUT: http://localhost:3001/teacher/{id}
 - DELETE: http://localhost:3001/teacher/{id}
 - POST: http://localhost:3001/teacher
+
+CATEGORY
+
+- GET / POST: http://localhost:3001/category
+- PUT / DELETE: http://localhost:3001/category/{id}
 
 CATEGORY - SPORT
 
@@ -62,3 +67,17 @@ PHOTO
 - GET DETALLES: http://localhost:3001/photo/{id}
 - POST: http://localhost:3001/photo/{albumId}
 - PUT / DELETE: http://localhost:3001/photo/{id}
+
+ROLE
+
+- GET:
+- POST:
+- PUT:
+- DELETE:
+
+SPORT
+
+- GET:
+- POST:
+- PUT:
+- DELETE:
