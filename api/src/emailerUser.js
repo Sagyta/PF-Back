@@ -1,4 +1,6 @@
 const nodemailer = require("nodemailer");
+require("dotenv").config();
+const { user,password }= process.env
 const htmlMailUserTemplate = `<!DOCTYPE html PÚBLICO "-//W3C//DTD XHTML 1.0 Transicional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transicional.dtd">
 <html xmlns="http ://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" style="font-family:arial, 'helvetica neue', helvetica, sans-serif" >
 <head>
@@ -148,8 +150,8 @@ const createTrans = () =>{
         port: 465,
         secure: true,
         auth: {
-          user: "clubdhenry",
-          pass: "opkodakflefihumg"
+          user: `${user}`,
+          pass: `${password}`
         }
     });
     return transport;
