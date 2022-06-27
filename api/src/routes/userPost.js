@@ -1,6 +1,7 @@
 const { User } = require("../db");
 var express = require("express");
 var router = express.Router();
+const emailerUser = require('../emailerUser')
 
 router.post("/", async(req,res,next)=>{
     let { name, surname, address, phone, email, username, password, dni, isOlder, tutorName, tutorPhone, tutorEmail, roleId }= req.body
@@ -30,6 +31,7 @@ router.post("/", async(req,res,next)=>{
             tutorEmail,
             roleId
         })
+        emailerUser.sendMail(newUser)
         return res.send({msg: 'Usuario creado exitosamente'})
     }catch(error){
         next(error)

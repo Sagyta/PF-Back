@@ -164,7 +164,7 @@ padding:15px 30px 15px 30px!important;
 <td valign="top" align="left" style="padding:0;Margin:0">
 <table width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
 <tr style="border-collapse:collapse">
-<td align="left" style="padding:0;Margin:0"><h4 style="Margin:0;line-height:100%;mso-line-height-rule:exactly;font-family:'Arial Narrow', Arial, sans-serif;letter-spacing:0.5px;padding-bottom:5px"><font style="vertical-align:inherit"><font style="vertical-align:inherit"><font style="vertical-align:inherit"><font style="vertical-align:inherit">Correo electrónico:</font></font></font></font></h4><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:18px;color:#333333;font-size:12px"><a target="_blank" href="mailto:clubHenry@gmail.com" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:none;color:#333333;font-size:12px">clubHenry@gmail.com</a></p></td>
+<td align="left" style="padding:0;Margin:0"><h4 style="Margin:0;line-height:100%;mso-line-height-rule:exactly;font-family:'Arial Narrow', Arial, sans-serif;letter-spacing:0.5px;padding-bottom:5px"><font style="vertical-align:inherit"><font style="vertical-align:inherit"><font style="vertical-align:inherit"><font style="vertical-align:inherit">Correo electrónico:</font></font></font></font></h4><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:18px;color:#333333;font-size:12px"><a target="_blank" href="mailto:clubHenry@gmail.com" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:none;color:#333333;font-size:12px">clubdhenry@gmail.com</a></p></td>
 </tr>
 <tr style="border-collapse:collapse">
 <td align="left" valign="top" style="padding:0;Margin:0;padding-top:10px"><h4 style="Margin:0;line-height:100%;mso-line-height-rule:exactly;font-family:'Arial Narrow', Arial, sans-serif;letter-spacing:0.5px;padding-bottom:5px">Follow:</h4></td>
@@ -228,11 +228,12 @@ padding:15px 30px 15px 30px!important;
 
 const createTrans = () =>{
     const transport = nodemailer.createTransport({
-        host: "smtp.mailtrap.io",
-        port: 2525,
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
         auth: {
-          user: "88cf01d4ed8bd9",
-          pass: "5d103dc47ade39"
+          user: "clubdhenry",
+          pass: "opkodakflefihumg"
         }
     });
     return transport;
@@ -241,7 +242,7 @@ const createTrans = () =>{
 const sendMail = async (newContact) => {
     const transporter = createTrans ()
     const info = await transporter.sendMail({
-        from: '"Club Deportivo Henry" <clubHenry@gmail.com>', 
+        from: '"Club Deportivo Henry" <clubdhenry@gmail.com>', 
         to: `${newContact.email}`, 
         subject: `Hola ${newContact.name}. Recibimos tu consulta`, 
         html: htmlMailTemplate
