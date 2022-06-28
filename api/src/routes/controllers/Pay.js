@@ -22,14 +22,16 @@ async function getPayId(req,res,next){
 
 async function postPay(req,res,next){
     const {
-        nroPay
+        price,
+        voucher
     } = req.body
     try {
-        if(!nroPay){
+        if(!price){
             res.status(404).send('Debe ingresar número de pago')
         }else{
              let newPayment = await Pay.create({
-                nroPay
+                price,
+                voucher
             })
             res.send('Pago Creado')
             return newPayment
