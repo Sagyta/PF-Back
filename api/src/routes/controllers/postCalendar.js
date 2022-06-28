@@ -1,10 +1,10 @@
 const {Calendar} = require('../../db.js');
 async function postCalendar(req,res,next){
-   let {title,startTime,endTime,startRecur,endRecur,daysOfWeek,calendarId} = req.body;
+   let {title,startTime,endTime,startRecur,endRecur,daysOfWeek,sportId} = req.body;
 
     try{
 
-    if(!title, !startTime || !endTime || !startRecur || !endRecur || !daysOfWeek || !calendarId){
+    if(!title, !startTime || !endTime || !startRecur || !endRecur || !daysOfWeek || !sportId){
         return res.send({msg: 'Lo siento faltan datos que completar'})
     }else {
             
@@ -15,7 +15,7 @@ async function postCalendar(req,res,next){
             startRecur,
             endRecur,
             daysOfWeek,
-            calendarId
+            sportId
         });
 
         console.log(datos);
