@@ -510,8 +510,60 @@ INSCRIPTION
         }
 
 ### Rutas CALENDAR
-- GET 
-- POST
-- GET DETALLES
-- PUT
-- DELETE
+- GET trae estos datos desde el back:
+
+        [{
+            id
+            title
+            name (nombre del deporte)
+            startTime (Hora : hh:mm)
+            endTime (Hora hh:mm)
+            startRecur (Hora hh:mm)
+            endRecur (Hora hh:mm)
+            daysOfWeek:
+                        [
+                            (numero de dia)
+                        ]
+        }]
+
+- POST se necesitan enviar los siguientes datos:
+
+        [{
+            title
+            startTime (Hora : hh:mm)
+            endTime (Hora hh:mm)
+            startRecur (Hora hh:mm)
+            endRecur (Hora hh:mm)
+            daysOfWeek: [(aca va el numero que identifica al dia)]
+            sportId
+        }]
+
+- GET DETALLES se pasa el {id} del calendario por parametros, trae los datos de uno solo:
+
+        [{
+            id
+            title
+            name (nombre del deporte)
+            startTime (Hora : hh:mm)
+            endTime (Hora hh:mm)
+            startRecur (Hora hh:mm)
+            endRecur (Hora hh:mm)
+            daysOfWeek:
+                        [
+                            (numero de dia)
+                        ]
+        }]
+
+- PUT pasando el {id} del calendario por parametros, y se pueden cambiar los siguientes datos:
+
+        [{
+            title
+            startTime (Hora : hh:mm)
+            endTime (Hora hh:mm)
+            startRecur (Hora hh:mm)
+            endRecur (Hora hh:mm)
+            daysOfWeek: [(aca va el numero que identifica al dia)]
+            sportId
+        }]
+
+- DELETE pasando el {id} del calendario por parametros
