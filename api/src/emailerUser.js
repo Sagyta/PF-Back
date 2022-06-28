@@ -142,7 +142,7 @@ relleno:10px 30px 10px 30px!importante;
 </table>
 </div>
 </body>
-</html>`
+</html>` 
 
 const createTrans = () =>{
     const transport = nodemailer.createTransport({
@@ -157,18 +157,46 @@ const createTrans = () =>{
     return transport;
 }
 
-const sendMail = async (newUser) => {
-    const transporter = createTrans ()
-    const info = await transporter.sendMail({
-        from: '"Club Deportivo Henry" <clubdhenry@gmail.com>', 
-        to: `${newUser.email}`, 
-        subject: `Hola ${newUser.name}. Henry te da la bienvenida`, 
-        html: htmlMailUserTemplate
-    });
-
-    console.log("Mensaje enviado a: %s", info.messageId);
-
-    return
+const sendMail = async (email, subject, html/* newUser */) => {
+    try{
+        const transporter = createTrans ()
+        const info = await transporter.sendMail({
+            from: '"Club Deportivo Henry" <clubdhenry@gmail.com>', 
+            to: email/*  `${newUser.email}` */, 
+            subject/* : `Hola ${newUser.name}. Henry te da la bienvenida` */, 
+            html/* : htmlMailUserTemplate */,
+        });
+    
+        console.log("Mensaje enviado a: %s", info.messageId);
+    
+        return
+    }catch(error){
+        console.log('Algo no va bien con el mail', error);
+    }
+}
+const getTemplate = (name, token) => {
+    return `
+      <head>
+          <link rel="stylesheet" href="./style.css">
+      </head>
+      
+      <div id="email___content">
+          <img src="https://raw.githubusercontent.com/matias183/FrontHenryClub/main/src/utils/fotos/logo.gif" alt="">
+          <h2>Hola ${ name }</h2>
+          <p>Para confirmar tu email, ingresa al siguiente enlace</p>
+          <a
+              href="http://localhost:3001/user/confirm/${ token }"
+              target="_blank"
+          >Confirmar Cuenta</a>
+      </div>
+    `;
 }
 
-exports.sendMail = (newUser) => sendMail(newUser)
+
+module.exports = {
+  sendMail,
+  getTemplate
+}
+
+
+//exports.sendMail = (newUser) => sendMail(newUser)
