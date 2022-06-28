@@ -22,7 +22,7 @@ async function getPhotoId(req,res,next){
         const photoId = await Photo.findByPk(id,{
             include:[{
                 model: Album,
-                attributes: ['name']
+                attributes: ['name', 'description']
             }],
             attributes: {exclude: ['albumId']}
         })

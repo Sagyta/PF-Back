@@ -25,7 +25,19 @@ async function getComment (req,res,next){
 async function getCommentId(req,res,next){
     const {id} = req.params
     try {
-        const commentsId = await Comment.findByPk(id) 
+        const commentsId = await Comment.findByPk(id,{
+            include:[
+                {
+                    model: User,
+                    attributes: ['username']
+                },
+                {
+                    model: New,
+                    attributes: ['title']
+                }
+            ],
+            attributes: {exclude: ['newId', 'userId']}
+        }) 
         console.log(commentsId)      
         res.send(commentsId)
     } catch (error) {
