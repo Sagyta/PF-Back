@@ -28,6 +28,15 @@ module.exports = (sequelize)=>{
 			type: DataTypes.STRING,
 			allowNull: false
 		},
+		code: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+		status: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			defaultValue: 'UNVERIFIED'
+		},
 		username: {
 			type: DataTypes.STRING,
 			allowNull: false

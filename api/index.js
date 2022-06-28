@@ -2,7 +2,7 @@ const {Role, Sport, Category, User} = require('./src/db.js');
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 
-conn.sync({ force: false }).then(() => { 
+conn.sync({ force: true }).then(() => { 
   
   server.listen(3001, () => {
     console.log('Server corriendo'); 
@@ -25,7 +25,7 @@ conn.sync({ force: false }).then(() => {
         await Sport.create({name: 'Natacion'});
         await Sport.create({name: 'Hockey'});
       }
-      const user= await User.findOne()
+      /* const user= await User.findOne()
       if(!user){
         await User.create({
         name: 'Admin',
@@ -39,7 +39,7 @@ conn.sync({ force: false }).then(() => {
         isOlder: true,
         roleId: 2
         });
-      }
+      } */
     })();    
   });
 }); 
