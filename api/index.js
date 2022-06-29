@@ -2,7 +2,7 @@ const {Role, Sport, Category, User} = require('./src/db.js');
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 
-conn.sync({ force: true }).then(() => { 
+conn.sync({ force: false }).then(() => { 
   
   server.listen(3001, () => {
     console.log('Server corriendo'); 
@@ -12,6 +12,7 @@ conn.sync({ force: true }).then(() => {
       if(!role){
         await Role.create({name: 'Socio'});
         await Role.create({name: 'Admin'});
+        await Role.create({name: 'Teacher'});
       }
       const category= await Category.findOne()
       if(!category){
@@ -33,8 +34,8 @@ conn.sync({ force: true }).then(() => {
         address: "Bootcamp",
         phone: "52458",
         email: "admin@henry.com",
-        code: "d78d0672-7c23-40b0-9262-3912a7491778",
-        status : "VERIFIED",
+        code: 'd78d0672-7c23-40b0-9262-3912a7491778',
+        status: 'VERIFIED', 
         username: "admin",
         password: "admin",
         dni: "12525452",

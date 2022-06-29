@@ -22,6 +22,7 @@ const album = require('./Albums')
 const photos = require('./Photos')
 const calendar = require('./calendar')
 const userConfirm = require('./userPost')
+
 const router = Router();
 
 //router.use('/', noticiasRoute)
