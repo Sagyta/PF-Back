@@ -81,8 +81,8 @@ CategorySport.belongsTo(Sport);
 Category.hasMany(CategorySport)
 CategorySport.belongsTo(Category);
 
-Teacher.hasMany(CategorySport)
-CategorySport.belongsTo(Teacher);
+User.hasMany(CategorySport)
+CategorySport.belongsTo(User);
 
 Album.hasMany(Photo)
 Photo.belongsTo(Album);

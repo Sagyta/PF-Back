@@ -1,11 +1,11 @@
-const {Category, Teacher, CategorySport, Sport} = require('../../db')
+const {Category, User, CategorySport, Sport} = require('../../db')
 
  async function getCategorySport (req,res,next){
     try {
         const category = await CategorySport.findAll({
             include:[
                 {
-                model: Teacher,
+                model: User,
                 attributes: ['name', 'surname']
                 },
                 {
@@ -18,7 +18,7 @@ const {Category, Teacher, CategorySport, Sport} = require('../../db')
                 },
                 
             ],
-            attributes: {exclude: ['teacherId', 'sportId', 'categoryId']}
+            attributes: {exclude: ['userId', 'sportId', 'categoryId']}
         })
         res.send(category)
 
@@ -33,7 +33,7 @@ async function getCategorySportId(req,res,next){
         const categoryId = await CategorySport.findByPk(id,{
             include:[
                 {
-                model: Teacher,
+                model: User,
                 attributes: ['name', 'surname']
                 },
                 {
@@ -45,7 +45,7 @@ async function getCategorySportId(req,res,next){
                 attributes: ['name']
                 },
         ],
-                 attributes: {exclude: ['teacherId', 'sportId', 'categoryId']}
+                 attributes: {exclude: ['userId', 'sportId', 'categoryId']}
         })
         res.send(categoryId)
     } catch (error) {
@@ -55,7 +55,7 @@ async function getCategorySportId(req,res,next){
 
 async function postCategorySport(req,res,next){
     const {
-    day, start, finish, description, fee, teacherId, categoryId, sportId
+    day, start, finish, description, fee, userId, categoryId, sportId
     } = req.body
     try {
         const exist = await CategorySport.findAll({
@@ -70,7 +70,7 @@ async function postCategorySport(req,res,next){
         if(exist.length) return res.status(400)
         .send('Rechazado, ese dia y horarios estan ya reservados para ese deporte');
 
-        if(!sportId || !categoryId || !teacherId || !day || !start || !finish){
+        if(!sportId || !categoryId || !userId || !day || !start || !finish){
             res.status(404).send('Debe ingresar todos los datos')
         }else{
              let newCategory = await CategorySport.create({
@@ -81,7 +81,7 @@ async function postCategorySport(req,res,next){
                 fee,
                 categoryId,
                 sportId,
-                teacherId,
+                userId,
             })
             res.send('Categoría Creada')
             return newCategory
@@ -103,7 +103,7 @@ async function putCategorySport(req,res,next){
             fee: req.body.fee,
             categoryId: req.body.categoryId,
             sportId: req.body.sportId,
-            teacherId: req.body.teacherId,
+            userId: req.body.userId,
         })
         res.status(200).send(updateCategorySport)
     }catch(error){
