@@ -25,7 +25,7 @@ conn.sync({ force: true }).then(() => {
         await Sport.create({name: 'Natacion'});
         await Sport.create({name: 'Hockey'});
       }
-      /* const user= await User.findOne()
+      const user= await User.findOne()
       if(!user){
         await User.create({
         name: 'Admin',
@@ -33,13 +33,15 @@ conn.sync({ force: true }).then(() => {
         address: "Bootcamp",
         phone: "52458",
         email: "admin@henry.com",
+        code: "d78d0672-7c23-40b0-9262-3912a7491778",
+        status : "VERIFIED",
         username: "admin",
         password: "admin",
         dni: "12525452",
         isOlder: true,
         roleId: 2
         });
-      } */
+      }
     })();    
   });
 }); 
