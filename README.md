@@ -70,17 +70,11 @@ PHOTO
 
 ROLE
 
-- GET:
-- POST:
-- PUT:
-- DELETE:
+- GET / POST / PUT / DELETE: http://localhost:3001/role
 
 SPORT
 
-- GET:
-- POST:
-- PUT:
-- DELETE:
+- GET / POST / PUT / DELETE: http://localhost:3001/sport
 
 INSCRIPTION
 
@@ -246,7 +240,6 @@ INSCRIPTION
             email
             username
             password
-            membershipNumber
             dni
             isOlder (si es false, agregar ademas:
                 tutorName, tutorPhone, tutorEmail)
@@ -567,3 +560,49 @@ INSCRIPTION
         }]
 
 - DELETE pasando el {id} del calendario por parametros
+
+### Ruta INSCRIPTION
+- GET datos que traera el get:
+
+        [{
+            id
+            user:
+                {
+                    name
+                    surname
+                }
+            CategorySport:
+                          {
+                              day
+                              start
+                              finish
+                              fee
+                              sport:
+                                    {
+                                        name
+                                    }
+                              category:
+                                       {
+                                           name
+                                       }   
+                              teacher:
+                                      {
+                                          name
+                                          surname
+                                      }  
+                          }  
+        }]
+
+- POST con el {userId} por parametros:
+
+        {
+            CategorySportId
+        }
+
+- PUT con el {id} de inscription por parametros:
+
+        {
+            CategorySportId
+        }
+
+- DELETE con el {id} de inscription por parametros
