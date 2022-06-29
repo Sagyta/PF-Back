@@ -248,8 +248,28 @@ INSCRIPTION
 - PUT 
 <!-- ----------------------------------- -->
 
-### Rutas CONTACT <!-- EN ACTUALIZACION -->
+### Rutas CONTACT 
+- GET traerá para el administrador la vista de los datos de todos los contactos que lleguen a la página:
+{
+    id,
+    email,
+    name,
+    surname,
+    phone,
+    message               
+}
 
+- POST se requiere por body los siguientes datos:
+{
+    email, (requisito)
+    name,
+    surname,
+    phone,
+    message
+}
+Debería salir un alert al llenar el form de que su mensaje fué enviado con éxito y se vacíen los inputs ya que no se puede editar y evitar que se vuelva a enviar el mismo mensaje de contacto
+
+- DELETE el administrador podrá eliminar de la base de datos el registro de contacto usando el {id} del mismo
 ### Rutas PAY <!-- en construccion -->
 
 ### Rutas TEACHER
