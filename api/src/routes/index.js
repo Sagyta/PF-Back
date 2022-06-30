@@ -22,6 +22,7 @@ const album = require('./Albums')
 const photos = require('./Photos')
 const calendar = require('./calendar')
 const userConfirm = require('./userPost')
+const login = require('./Login')
 
 const router = Router();
 
@@ -46,6 +47,7 @@ router.use('/categorysport', categorySport)
 router.use('/album', album)
 router.use('/photo', photos)
 router.use('/calendar', calendar)
+router.use('/login', login)
 
 
 module.exports = router;
