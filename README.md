@@ -284,22 +284,11 @@ Debería salir un alert al llenar el form de que su mensaje fué enviado con éx
             id
             name
             surname
-            dni
-            address
-            phone
-            email
+            role:
+                {
+                    name
+                }
         }]
-
-- POST se solicitan por body estos datos: 
-
-        {
-            name
-            surname
-            dni
-            address
-            phone
-            email
-        }
 
 - GET DETALLES, trae los mismos datos que el get normal:
 
@@ -311,20 +300,21 @@ Debería salir un alert al llenar el form de que su mensaje fué enviado con éx
             address
             phone
             email
+            username
+            membershipNumber (numero de socio)
+            dni
+            role:
+                {
+                    name
+                }
         }
  
-- PUT se coloca el {id} del profesor por parametros y los datos que se pueden cambiar son:
+- PUT se coloca el {id} del usuario que tiene el rol de profesor por parametros y y el admin solo puede cambiar el rol que se pueden cambiar son:
 
         {
-            name
-            surname
-            dni
-            address
-            phone
-            email
+            roleId
         }
 
-- DELETE colocando el {id} del profesor puedo borrarlo
 
 ### Rutas CATEGORY
 - GET los datos que se mandan del back son:
@@ -365,7 +355,7 @@ Debería salir un alert al llenar el form de que su mensaje fué enviado con éx
             finish (hora de finalizacion de la clase: hh:mm:ss)
             description
             fee (cuota de la clase)
-            teacher:
+            user: (este seria el profesor)
                     {
                         name
                         surname
@@ -390,7 +380,7 @@ Debería salir un alert al llenar el form de que su mensaje fué enviado con éx
             fee
             categoryId (colocar aqui el numero del id de la categoria)
             sportId (id del deporte)
-            teacherId (id del profesor)
+            userId (id de quien sera el profesor)
         }
 
 - GET DETALLES colocar el {id} como parametros, trae los mismos datos que el get comun
