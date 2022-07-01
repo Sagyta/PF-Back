@@ -1,4 +1,4 @@
-const {Inscription, Sport, Category, User, CategorySport, Teacher} = require('../../db')
+const {Inscription, Sport, Category, User, CategorySport} = require('../../db')
 /* const emailerInscripciones = require('../../emailerInscripciones') */
 
 async function getInscription (req,res,next){
@@ -22,7 +22,7 @@ async function getInscription (req,res,next){
                         attributes: ['name']
                     },
                     {
-                        model: Teacher,
+                        model: User,
                         attributes: ['name', 'surname']
                     }
                 ]
@@ -60,9 +60,9 @@ async function getInscription (req,res,next){
                         attributes: ['name']
                     },
                     {
-                        model: Teacher,
-                        attributes: ['name', 'surname']
-                    }
+                        model: User,
+                        attributes: ['name', 'surname','roleId']
+                    },
                 ]
                 },
             ],
