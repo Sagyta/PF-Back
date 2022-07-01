@@ -98,7 +98,7 @@ router.get('/confirm/:token', async(req, res) => {
        await user.save();
 
        // Redireccionar a la confirmación
-       return res.status(200).redirect('https://raw.githubusercontent.com/matias183/FrontHenryClub/main/src/utils/fotos/logo.gif');
+       return res.status(200).redirect('http://localhost:3000/home');
         
     } catch (error) {
         console.log(error);
