@@ -65,6 +65,9 @@ module.exports = (sequelize)=>{
 		},
 		tutorEmail: {
 			type: DataTypes.STRING
+		}, 
+		photo:{
+			type: DataTypes.STRING
 		}
 	},{
 		timestamps: false

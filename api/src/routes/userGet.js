@@ -65,7 +65,14 @@ router.get('/:id', async(req,res,next)=>{
         return res.send({msg:'Lo siento escriba un id valido'});
     }else{
 
-    const usuario = await User.findOne({where: {id: id}});
+    const usuario = await User.findByPk(id,
+        {
+            include:[{
+                model: Role,
+                attributes: ['name']
+            }],
+            attributes: {exclude: ['roleId', 'code', 'password']}
+        });
     if(usuario === null){
         return res.send({msg: 'Lo siendo pero no hay ningun usuario con ese id'})
     }else{

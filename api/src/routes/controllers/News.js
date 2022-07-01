@@ -1,6 +1,5 @@
 const {New, Comment, User, Sport} = require('../../db')
 
-
 async function getNews (req,res,next){
     try {
         const {title, name} = req.query
@@ -16,7 +15,7 @@ async function getNews (req,res,next){
                     attributes: ['name']
                 },
             ],
-            attributes:['id','title', 'subtitle']
+            attributes:['id','title', 'subtitle','image']
         })
         if(title){
             console.log(title)
@@ -88,6 +87,7 @@ async function postNews(req,res,next){
             title,
             subtitle,
             text,
+            image,
             sportId,
         }) 
              
