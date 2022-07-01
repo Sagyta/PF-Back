@@ -20,13 +20,13 @@ const teacher = require('./Teacher')
 const categorySport = require('./CategorySports')
 const album = require('./Albums')
 const photos = require('./Photos')
-const calendar = require('./calendar')
+const calendar = require('./Calendars')
 const userConfirm = require('./userPost')
 const login = require('./Login')
 
 const router = Router();
 
-//router.use('/', noticiasRoute)
+
 router.use('/user', userPost)
 router.use('/user', userDelete)
 router.use('/user', userGet)
