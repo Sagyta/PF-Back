@@ -70,17 +70,11 @@ PHOTO
 
 ROLE
 
-- GET:
-- POST:
-- PUT:
-- DELETE:
+- GET / POST / PUT / DELETE: http://localhost:3001/role
 
 SPORT
 
-- GET:
-- POST:
-- PUT:
-- DELETE:
+- GET / POST / PUT / DELETE: http://localhost:3001/sport
 
 INSCRIPTION
 
@@ -246,7 +240,6 @@ INSCRIPTION
             email
             username
             password
-            membershipNumber
             dni
             isOlder (si es false, agregar ademas:
                 tutorName, tutorPhone, tutorEmail)
@@ -257,6 +250,36 @@ INSCRIPTION
 
 ### Rutas CONTACT 
 - GET traerá para el administrador la vista de los datos de todos los contactos que lleguen a la página:
+
+
+       {
+            id
+            email
+            name
+            surname
+            phone
+            message
+        }
+
+- POST se requiere por body los siguientes datos:
+
+      {
+            email (requisito)
+            name
+            surname
+            phone
+            message
+        }
+
+Debería salir un alert al llenar el form de que su mensaje fué enviado con éxito y se vacíen los inputs ya que no se puede editar y evitar que se vuelva a enviar el mismo mensaje de contacto
+
+- DELETE el administrador podrá eliminar de la base de datos el registro de contacto usando el {id} del mismo
+
+### Rutas PAY <!-- en construccion -->
+
+### Rutas TEACHER
+- GET traera los datos del profesor que el admin haya creado:
+
 
        {
             id
@@ -281,7 +304,7 @@ INSCRIPTION
 Debería salir un alert al llenar el form de que su mensaje fué enviado con éxito y se vacíen los inputs ya que no se puede editar y evitar que se vuelva a enviar el mismo mensaje de contacto
 
 - DELETE el administrador podrá eliminar de la base de datos el registro de contacto usando el {id} del mismo
-
+- 
 ### Rutas PAY <!-- en construccion -->
 
 ### Rutas TEACHER
@@ -291,22 +314,11 @@ Debería salir un alert al llenar el form de que su mensaje fué enviado con éx
             id
             name
             surname
-            dni
-            address
-            phone
-            email
+            role:
+                {
+                    name
+                }
         }]
-
-- POST se solicitan por body estos datos: 
-
-        {
-            name
-            surname
-            dni
-            address
-            phone
-            email
-        }
 
 - GET DETALLES, trae los mismos datos que el get normal:
 
@@ -318,20 +330,21 @@ Debería salir un alert al llenar el form de que su mensaje fué enviado con éx
             address
             phone
             email
+            username
+            membershipNumber (numero de socio)
+            dni
+            role:
+                {
+                    name
+                }
         }
  
-- PUT se coloca el {id} del profesor por parametros y los datos que se pueden cambiar son:
+- PUT se coloca el {id} del usuario que tiene el rol de profesor por parametros y y el admin solo puede cambiar el rol que se pueden cambiar son:
 
         {
-            name
-            surname
-            dni
-            address
-            phone
-            email
+            roleId
         }
 
-- DELETE colocando el {id} del profesor puedo borrarlo
 
 ### Rutas CATEGORY
 - GET los datos que se mandan del back son:
@@ -372,7 +385,7 @@ Debería salir un alert al llenar el form de que su mensaje fué enviado con éx
             finish (hora de finalizacion de la clase: hh:mm:ss)
             description
             fee (cuota de la clase)
-            teacher:
+            user: (este seria el profesor)
                     {
                         name
                         surname
@@ -397,7 +410,7 @@ Debería salir un alert al llenar el form de que su mensaje fué enviado con éx
             fee
             categoryId (colocar aqui el numero del id de la categoria)
             sportId (id del deporte)
-            teacherId (id del profesor)
+            userId (id de quien sera el profesor)
         }
 
 - GET DETALLES colocar el {id} como parametros, trae los mismos datos que el get comun
@@ -535,8 +548,106 @@ Debería salir un alert al llenar el form de que su mensaje fué enviado con éx
         }
 
 ### Rutas CALENDAR
-- GET 
-- POST
-- GET DETALLES
-- PUT
-- DELETE
+- GET trae estos datos desde el back:
+
+        [{
+            id
+            title
+            name (nombre del deporte)
+            startTime (Hora : hh:mm)
+            endTime (Hora hh:mm)
+            startRecur (Hora hh:mm)
+            endRecur (Hora hh:mm)
+            daysOfWeek:
+                        [
+                            (numero de dia)
+                        ]
+        }]
+
+- POST se necesitan enviar los siguientes datos:
+
+        [{
+            title
+            startTime (Hora : hh:mm)
+            endTime (Hora hh:mm)
+            startRecur (Hora hh:mm)
+            endRecur (Hora hh:mm)
+            daysOfWeek: [(aca va el numero que identifica al dia)]
+            sportId
+        }]
+
+- GET DETALLES se pasa el {id} del calendario por parametros, trae los datos de uno solo:
+
+        [{
+            id
+            title
+            name (nombre del deporte)
+            startTime (Hora : hh:mm)
+            endTime (Hora hh:mm)
+            startRecur (Hora hh:mm)
+            endRecur (Hora hh:mm)
+            daysOfWeek:
+                        [
+                            (numero de dia)
+                        ]
+        }]
+
+- PUT pasando el {id} del calendario por parametros, y se pueden cambiar los siguientes datos:
+
+        [{
+            title
+            startTime (Hora : hh:mm)
+            endTime (Hora hh:mm)
+            startRecur (Hora hh:mm)
+            endRecur (Hora hh:mm)
+            daysOfWeek: [(aca va el numero que identifica al dia)]
+            sportId
+        }]
+
+- DELETE pasando el {id} del calendario por parametros
+
+### Ruta INSCRIPTION
+- GET datos que traera el get:
+
+        [{
+            id
+            user:
+                {
+                    name
+                    surname
+                }
+            CategorySport:
+                          {
+                              day
+                              start
+                              finish
+                              fee
+                              sport:
+                                    {
+                                        name
+                                    }
+                              category:
+                                       {
+                                           name
+                                       }   
+                              teacher:
+                                      {
+                                          name
+                                          surname
+                                      }  
+                          }  
+        }]
+
+- POST con el {userId} por parametros:
+
+        {
+            CategorySportId
+        }
+
+- PUT con el {id} de inscription por parametros:
+
+        {
+            CategorySportId
+        }
+
+- DELETE con el {id} de inscription por parametros

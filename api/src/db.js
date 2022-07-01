@@ -81,14 +81,14 @@ CategorySport.belongsTo(Sport);
 Category.hasMany(CategorySport)
 CategorySport.belongsTo(Category);
 
-Teacher.hasMany(CategorySport)
-CategorySport.belongsTo(Teacher);
+User.hasMany(CategorySport)
+CategorySport.belongsTo(User);
 
 Album.hasMany(Photo)
 Photo.belongsTo(Album);
 
-Sport.hasMany(Calendar, {foreignKey: 'calendarId', sourceKey: 'id'});
-Calendar.belongsTo(Sport, {foreignKey: 'calendarId', targetKey: 'id'});
+Sport.hasMany(Calendar, {foreignKey: 'sportId', sourceKey: 'id'});
+Calendar.belongsTo(Sport, {foreignKey: 'sportId', targetKey: 'id'});
 
 module.exports = {
   ...sequelize.models, 
