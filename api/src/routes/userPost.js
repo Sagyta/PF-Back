@@ -2,9 +2,9 @@ const { User } = require("../db");
 var express = require("express");
 var router = express.Router();
 const { v4: uuidv4 } = require('uuid');
-const emailerUser = require('../emailerUser')
 const { getToken, getTokenData } = require('../jwt.config');
-const { getTemplate, sendMail } = require('../emailerUser');
+const { sendMail } = require('../emailerUser');
+const { getTemplate } = require('../Templates/userEmailTemplate');
 
 
 router.post("/", async(req,res,next)=>{
@@ -50,8 +50,6 @@ router.post("/", async(req,res,next)=>{
             success: true,
             msg: 'Registrado correctamente'
         });
-        //emailerUser.sendMail(newUser)
-        //return res.send({msg: 'Usuario creado exitosamente'})
     }catch(error){
         next(error)
         return res.json({
