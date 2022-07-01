@@ -8,9 +8,7 @@ const userPost = require('./userPost');
 const userDelete = require('./userDelete');
 const userGet = require('./userGet');
 const userPut = require('./userPut');
-const contactPost = require('./contactPost');
-const contactGet = require('./contactGet');
-const contactDelete = require('./contactDelete');
+const contact = require('./Contacts');
 const sport  = require('./sport');
 const category = require('./Category');
 const pay = require('./Pay')
@@ -32,9 +30,7 @@ router.use('/user', userDelete)
 router.use('/user', userGet)
 router.use('/user', userPut)
 router.use('/user/confirm/:token', userConfirm)
-router.use('/contact', contactPost)
-router.use('/contact', contactGet)
-router.use('/contact', contactDelete)
+router.use('/contact', contact)
 router.use('/sport', sport)
 router.use('/news', newRoute)
 router.use('/comment', commentRoute)
