@@ -1,5 +1,5 @@
 const {Contact} = require('../../db')
-const emailer = require('../../emailer')
+const emailer = require('../../Emailers/emailer')
 
 async function getContact (req,res,next){
     try{
