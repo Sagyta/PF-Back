@@ -1,7 +1,7 @@
 const { User, Role } = require("../../db");
 const { v4: uuidv4 } = require('uuid');
 const { getToken, getTokenData } = require('../../jwt.config');
-const { sendMail } = require('../../emailerUser');
+const { sendMail } = require('../../Emailers/emailerUser')
 const { getTemplate } = require('../../Templates/userEmailTemplate');
 
 async function getUser(req, res, next) {

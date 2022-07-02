@@ -1,7 +1,7 @@
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 const { user,password }= process.env
-const { template } = require('./Templates/contactEmailTemplate');
+const { template } = require('../Templates/contactEmailTemplate');
 
 
 //*Funcion principal de Transport
