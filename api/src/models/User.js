@@ -67,7 +67,8 @@ module.exports = (sequelize)=>{
 			type: DataTypes.STRING
 		}, 
 		photo:{
-			type: DataTypes.STRING
+			type: DataTypes.STRING,
+			defaultValue: 'https://cdn-icons-png.flaticon.com/512/1177/1177568.png'
 		}
 	},{
 		timestamps: false

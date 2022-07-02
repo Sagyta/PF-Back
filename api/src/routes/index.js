@@ -2,10 +2,7 @@ const { Router } = require('express');
 
 const newRoute = require('./News')
 const commentRoute=require('./Comments')
-const userPost = require('./userPost');
-const userDelete = require('./userDelete');
-const userGet = require('./userGet');
-const userPut = require('./userPut');
+const user = require('./User');
 const contact = require('./Contacts');
 const sport  = require('./Sports');
 const category = require('./Category');
@@ -17,16 +14,12 @@ const categorySport = require('./CategorySports')
 const album = require('./Albums')
 const photos = require('./Photos')
 const calendar = require('./Calendars')
-const userConfirm = require('./userPost')
 const login = require('./Login')
 
 const router = Router();
 
-router.use('/user', userPost)
-router.use('/user', userDelete)
-router.use('/user', userGet)
-router.use('/user', userPut)
-router.use('/user/confirm/:token', userConfirm)
+
+router.use('/user', user)
 router.use('/contact', contact)
 router.use('/sport', sport)
 router.use('/news', newRoute)
