@@ -4,82 +4,93 @@ const { getToken, getTokenData } = require('../../jwt.config');
 const { sendMail } = require('../../emailerUser');
 const { getTemplate } = require('../../Templates/userEmailTemplate');
 
-async function getUser (req,res,next){
-    try{
+async function getUser(req, res, next) {
+  try {
+    const data = await User.findAll({
+      include: {
+        model: Role,
+        attributes: ["name"],
+      },
+    });
 
-        const data = await User.findAll({include: {
-            model: Role,
-            attributes: ['name']
-        }});
-       
-        let users = [...data];
-      
-        let maps = users.map(e=> {
-    
-        if(e.isOlder === true){
-            return {
-            id: e.id, 
-            name:e.name, 
-            surname: e.surname, 
-            address:e.address,
-            phone:e.phone,
-            email:e.email,
-            username:e.username,
-            membershipNumber:e.membershipNumber,
-            dni:e.dni,
-            role: e.role !== null ? e.role.name : 'no tiene rol',
-            isOlder: e.isOlder
-            }
-        }else {
-            return {
-                id: e.id, 
-                name:e.name, 
-                surname: e.surname, 
-                address:e.address,
-                phone:e.phone,
-                email:e.email,
-                username:e.username,
-                membershipNumber:e.membershipNumber,
-                dni:e.dni,
-                role: e.role !== null ? e.role.name : 'no tiene rol',
-                isOlder: e.isOlder,
-                tutorName: e.tutorName,
-                tutorPhone: e.tutorPhone,
-                tutorEmail: e.tutorEmail
-                }
-        }
-    
-        });
-          
-        res.send(maps);
-    }catch(error){
-        next(error);
-    }
+    let users = [...data];
+
+    let maps = users.map((e) => {
+      if (e.isOlder === true) {
+        return {
+          id: e.id,
+          name: e.name,
+          surname: e.surname,
+          address: e.address,
+          phone: e.phone,
+          email: e.email,
+          username: e.username,
+          membershipNumber: e.membershipNumber,
+          dni: e.dni,
+          role: e.role !== null ? e.role.name : "no tiene rol",
+          isOlder: e.isOlder,
+          photo: e.photo 
+        };
+      } else {
+        return {
+          id: e.id,
+          name: e.name,
+          surname: e.surname,
+          address: e.address,
+          phone: e.phone,
+          email: e.email,
+          username: e.username,
+          membershipNumber: e.membershipNumber,
+          dni: e.dni,
+          role: e.role !== null ? e.role.name : "no tiene rol",
+          isOlder: e.isOlder,
+          tutorName: e.tutorName,
+          tutorPhone: e.tutorPhone,
+          tutorEmail: e.tutorEmail,
+          photo: e.photo
+        };
+      }
+    });
+
+    res.send(maps);
+  } catch (error) {
+    next(error);
+  }
 }
 
-async function getUserId (req,res,next){
-    try{
-        let regexUuid = /[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}/;
-        let {id} = req.params;
-        if(!regexUuid.test(id)){
-            return res.send({msg:'Lo siento escriba un id valido'});
-        }else{
-    
-        const usuario = await User.findOne({where: {id: id}});
-        if(usuario === null){
-            return res.send({msg: 'Lo siendo pero no hay ningun usuario con ese id'})
-        }else{
-            console.log(usuario);
-            res.send(usuario)
-            }
-        }
-    }catch(error){
-        next(error)
+async function getUserId(req, res, next) {
+  try {
+    let regexUuid =
+      /[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}/;
+    let { id } = req.params;
+    if (!regexUuid.test(id)) {
+      return res.send({ msg: "Lo siento escriba un id valido" });
+    } else {
+      const usuario = await User.findByPk(id, {
+        include: [
+          {
+            model: Role,
+            attributes: ["name"],
+          },
+        ],
+        attributes: { exclude: ["roleId", "code", "password"] },
+      });
+      if (usuario === null) {
+        return res.send({
+          msg: "Lo siendo pero no hay ningun usuario con ese id",
+        });
+      } else {
+        console.log(usuario);
+        res.send(usuario);
+      }
     }
+  } catch (error) {
+    next(error);
+  }
 }
 
 async function postUser (req,res,next){
-    let { id,name, surname, address, phone, email, username, password, dni, isOlder, tutorName, tutorPhone, tutorEmail, roleId }= req.body
+    let { id,name, surname, address, phone, email, username, password, dni, isOlder, tutorName, tutorPhone, tutorEmail, photo, roleId }= req.body
    
     if(!name || !surname || !address || !phone || !email || !username || !password || !dni){
        if(isOlder !==true || isOlder !==false)
@@ -109,6 +120,7 @@ async function postUser (req,res,next){
             tutorName,
             tutorPhone,
             tutorEmail,
+            photo,
             roleId
         })
 
