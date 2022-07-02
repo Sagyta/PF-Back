@@ -7,7 +7,7 @@ async function getComment (req,res,next){
             include: [
                 {
                     model: User,
-                    attributes: ['name', 'surname']
+                    attributes: ['username']
                 }
             ],
             attributes:[
