@@ -30,23 +30,35 @@ function authAdmin(req,res,next) {
   // }
 
   /*            Enviar el token por header             */
-try {
-  const token = req.headers['authorization'];
-  const decoded = jwt.verify(token,'login_key');
-  if (decoded.user.role.name === "Admin"){
-    // res.json(decoded)
-    next()
-  } else {
-    req.err = "No permitido"
-    next()
+  try {
+    const token = req.headers['authorization'];
+    const isAdmin = jwt.verify(token,'login_key').user.isAdmin;
+    if (isAdmin){
+      // res.json(decoded)
+      next()
+    } else {
+      req.err = "No permitido"
+      next()
+    }
+    
+  } catch (error) {
+    console.log(error)
+    next(error)
   }
-  
-} catch (error) {
-  console.log(error)
-  next(error)
-}
-}
-
+  }
+  async function isBanned(req,res,next){
+    try {
+      const {email} = req.body
+      const user= await User.findOne({where:{email: email}})
+      if(user.isBanned){
+       return res.status(401).send('Usuario baneado')
+      }
+      next()
+    } catch (error) {
+      next(error)
+    }
+  }
 module.exports={
-  authAdmin
+  authAdmin,
+  isBanned,
 }
