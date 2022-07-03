@@ -1,4 +1,6 @@
 const jwt = require("jsonwebtoken");
+const { New, Comment, User, Sport } = require("../db");
+
 
 function Prueba(req,res,next) {
   //Header que llega con la solicitud del front
