@@ -52,6 +52,10 @@ async function getNewsId(req,res,next){
                 },
                 {
                 model: Comment,
+                include:[{
+                    model: User,
+                    attributes: ['username']
+                }],
                 attributes: ['id','comment']
                 },
             ],
