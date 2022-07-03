@@ -69,6 +69,16 @@ module.exports = (sequelize)=>{
 		photo:{
 			type: DataTypes.STRING,
 			defaultValue: 'https://cdn-icons-png.flaticon.com/512/1177/1177568.png'
+		},
+		isAdmin:{
+			type: DataTypes.BOOLEAN,
+			defaultValue: false,
+			allowNull: false
+		},
+		isBanned:{
+			type: DataTypes.BOOLEAN,
+			defaultValue: false,
+			allowNull: false
 		}
 	},{
 		timestamps: false
