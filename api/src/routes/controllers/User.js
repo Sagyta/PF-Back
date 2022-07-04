@@ -97,7 +97,7 @@ async function postUser (req,res,next){
         return res.json({error: "Faltan datos necesarios"})
     }
     if(!roleId){
-        roleId = 1
+        roleId = 2
     }
     if(await User.findOne({ where: {dni: dni}})) return res.json({error: "DNI ya existente en nuestra base de datos"})
     if(await User.findOne({ where: {username: username}})) return res.json({error: "Usuario ya existente en nuestra base de datos"})

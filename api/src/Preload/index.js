@@ -69,6 +69,20 @@ async function buildUser (){
         isOlder: true,
         roleId: 2
         });
+        await User.create({
+          name: 'Goku',
+          surname: 'Dresfera',
+          address: "Mundo exterior",
+          phone: "99558656",
+          email: "teacher@henry.com",
+          code: 'd78d0672-7c23-40b0-9262-3912a7491778',
+          status: 'VERIFIED', 
+          username: "sayayin",
+          password: "esferas",
+          dni: "3526563",
+          isOlder: true,
+          roleId: 3
+          });
       }
     } catch (error) {
         next(error)
