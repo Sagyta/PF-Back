@@ -15,7 +15,7 @@ app.post('/payment', async(req,res)=>{
         items,
         back_urls: {
             success: "https://prueba-mercado.vercel.app/success",
-            failure: "https://prueba-mercado.vercel.app/failure",
+            failure: "https://prueba-mercado.vercel.app/home",
             pending: "https://prueba-mercado.vercel.app/pending",
         },
     };
@@ -38,6 +38,7 @@ app.post('/check', async(req,res)=>{
         const results = await fetch(`${url}/${id}?access_token=${ACCESS_TOKEN}`).then(e=> e.json());
         if(results.order_status === 'paid'){
             console.log(results);
+
         }
         return res.send({msg: 'listo'});
 
