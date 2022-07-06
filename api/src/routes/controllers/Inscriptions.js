@@ -1,5 +1,5 @@
 const {Inscription, Sport, Category, User, CategorySport} = require('../../db')
-/* const emailerInscripciones = require('../../emailerInscripciones') */
+//const  /* emailerInscripciones */{ sendMailInscripcion }  = require('../../Emailers/emailerInscripciones')
 
 async function getInscription (req,res,next){
     try {
@@ -83,7 +83,8 @@ async function postInscription(req,res,next){
                 CategorySportId
             })            
             userInscripto.addInscription(insertInscription)
-            /* emailerInscripciones.sendMailInscripcion(userInscripto) */
+            /* emailerInscripciones.sendMailInscripcion(insertInscription) */
+           /*  await sendMailInscripcion(userInscripto.email, 'Hola') */
             res.send('La inscripcion se ha realizado correctamente')
     } catch (error) {
       next(error)  
