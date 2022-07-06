@@ -45,8 +45,8 @@ const pagoTemplate = ()=>{
                             <table cellpadding="0" cellspacing="0" class="es-header esd-header-popover" align="center">
                                 <tbody>
                                     <tr>
-                                        <td class="esd-stripe" align="center" bgcolor="#050744" style="background-color: #050744;" esd-custom-block-id="89423">
-                                            <table class="es-header-body" width="600" cellspacing="0" cellpadding="0" align="center" style="background-color: #050744;" bgcolor="#050744">
+                                        <td class="esd-stripe" align="center" bgcolor="#010101" style="background-color: #010101;" esd-custom-block-id="89423">
+                                            <table class="es-header-body" width="600" cellspacing="0" cellpadding="0" align="center" style="background-color: #010101;" bgcolor="#010101">
                                                 <tbody>
                                                     <tr>
                                                         <td class="esd-structure es-p25t es-p40b" align="left">
@@ -57,7 +57,7 @@ const pagoTemplate = ()=>{
                                                                             <table width="100%" cellspacing="0" cellpadding="0">
                                                                                 <tbody>
                                                                                     <tr>
-                                                                                        <td align="center" class="esd-block-image es-p20t es-m-txt-c" style="font-size: 0px;"><a target="_blank" href="https://viewstripo.email/"><img src="https://vpcaob.stripocdn.email/content/guids/1177807d-1056-464e-bc1f-5332f9c756e4/images/logo.gif" alt style="display: block;" width="150"></a></td>
+                                                                                        <td align="center" class="esd-block-image es-p20t es-m-txt-c" style="font-size: 0px;"><a target="_blank" href="https://viewstripo.email/"><img src="https://vpcaob.stripocdn.email/content/guids/CABINET_43d348960a0163b58fce3589bc5a87aa/images/logonocturno.png" alt style="display: block;" width="150"></a></td>
                                                                                     </tr>
                                                                                 </tbody>
                                                                             </table>
@@ -112,7 +112,7 @@ const pagoTemplate = ()=>{
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="esd-structure es-p20t es-p20b es-p20r es-p20l" esd-general-paddings-checked="false" align="left" style="background-color: #050744;" bgcolor="#050744">
+                                                        <td class="esd-structure es-p20t es-p20b es-p20r es-p20l" esd-general-paddings-checked="false" align="left" style="background-color: #010101;" bgcolor="#010101">
                                                             <!--[if mso]><table width="560" cellpadding="0" cellspacing="0"><tr><td width="178" valign="top"><![endif]-->
                                                             <table class="es-left" cellspacing="0" cellpadding="0" align="left">
                                                                 <tbody>
@@ -325,12 +325,12 @@ const pagoTemplate = ()=>{
                                                                                         <td align="center" class="esd-block-button">
                                                                                             <!--[if mso]><a href="http://localhost:3000/user" target="_blank" hidden>
         <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href="http://localhost:3000/user" 
-                    style="height:64px; v-text-anchor:middle; width:148px" arcsize="0%" stroke="f"  fillcolor="#050744">
+                    style="height:64px; v-text-anchor:middle; width:148px" arcsize="0%" stroke="f"  fillcolor="#e78345">
             <w:anchorlock></w:anchorlock>
-            <center style='color:#ffffff; font-family:Oswald, sans-serif; font-size:12px; font-weight:700; line-height:12px;  mso-text-raise:1px'>MIS DETALLES</center>
+            <center style='color:#010101; font-family:Oswald, sans-serif; font-size:12px; font-weight:700; line-height:12px;  mso-text-raise:1px'>MIS DETALLES</center>
         </v:roundrect></a>
     <![endif]-->
-                                                                                            <!--[if !mso]><!-- --><span class="msohide es-button-border" style="background: #050744;"><a href="http://localhost:3000/user" class="es-button" target="_blank" style="background: #050744; border-color: #050744;">MIS DETALLES</a></span>
+                                                                                            <!--[if !mso]><!-- --><span class="msohide es-button-border" style="background: #e78345;"><a href="http://localhost:3000/user" class="es-button" target="_blank" style="background: #e78345; border-color: #e78345; color: #010101;">MIS DETALLES</a></span>
                                                                                             <!--<![endif]-->
                                                                                         </td>
                                                                                     </tr>
@@ -351,8 +351,8 @@ const pagoTemplate = ()=>{
                             <table class="es-footer esd-footer-popover" cellspacing="0" cellpadding="0" align="center">
                                 <tbody>
                                     <tr>
-                                        <td class="esd-stripe" align="center" esd-custom-block-id="78465" bgcolor="#050744" style="background-color: #050744;">
-                                            <table class="es-footer-body" width="600" cellspacing="0" cellpadding="0" bgcolor="#050744" align="center" style="background-color: #050744;">
+                                        <td class="esd-stripe" align="center" esd-custom-block-id="78465" bgcolor="#010101" style="background-color: #010101;">
+                                            <table class="es-footer-body" width="600" cellspacing="0" cellpadding="0" align="center" style="background-color: #010101;" bgcolor="#010101">
                                                 <tbody>
                                                     <tr>
                                                         <td class="esd-structure es-p40t es-p40b es-p20r es-p20l" align="left">
@@ -365,7 +365,7 @@ const pagoTemplate = ()=>{
                                                                             <table width="100%" cellspacing="0" cellpadding="0">
                                                                                 <tbody>
                                                                                     <tr>
-                                                                                        <td align="center" class="esd-block-image es-m-txt-c" style="font-size: 0px;"><a target="_blank" href="https://viewstripo.email/"><img src="https://vpcaob.stripocdn.email/content/guids/CABINET_43d348960a0163b58fce3589bc5a87aa/images/logo.gif" alt style="display: block;" width="150"></a></td>
+                                                                                        <td align="center" class="esd-block-image es-m-txt-c" style="font-size: 0px;"><a target="_blank" href="https://viewstripo.email/"><img src="https://vpcaob.stripocdn.email/content/guids/CABINET_43d348960a0163b58fce3589bc5a87aa/images/logonocturno.png" alt style="display: block;" width="150"></a></td>
                                                                                     </tr>
                                                                                     <tr>
                                                                                         <td align="center" class="esd-block-social es-p20t es-m-txt-c" style="font-size:0">
