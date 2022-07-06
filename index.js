@@ -14,9 +14,9 @@ app.post('/payment', async(req,res)=>{
         payer_email,
         items,
         back_urls: {
-            success: "https://prueba-mercado.vercel.app/home",
-            failure: "https://prueba-mercado.vercel.app/home",
-            pending: "https://prueba-mercado.vercel.app/pending",
+            success: "https://club-henry.vercel.app/home",
+            failure: "https://club-henry.vercel.app/home",
+            pending: "https://club-henry.vercel.app/home",
         },
     };
 
