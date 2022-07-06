@@ -5,7 +5,7 @@ const axios = require('axios');
 
 const {ACCESS_TOKEN} = process.env;
 
-app.post('/payment', (req,res)=>{
+app.post('/payment', async(req,res)=>{
    
     let {payer_email, items} = req.body;
     const url = "https://api.mercadopago.com/checkout/preferences";
