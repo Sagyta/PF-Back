@@ -36,7 +36,7 @@ app.post('/check', async(req,res)=>{
     if(req.body.topic === 'merchant_order' && topic !== 'payment'){
         let url = 'https://api.mercadolibre.com/merchant_orders';
         const results = await fetch(`${url}/${id}?access_token=${ACCESS_TOKEN}`).then(e=> e.json());
-        if(info.order_status === 'paid'){
+        if(results.order_status === 'paid'){
             console.log(results);
         }
         return res.send({msg: 'listo'});
