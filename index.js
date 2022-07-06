@@ -14,9 +14,9 @@ app.post('/payment', async(req,res)=>{
         payer_email,
         items,
         back_urls: {
-            success: "https://prueba-mercado.vercel.app//success",
-            failure: "/failure",
-            pending: "/pending",
+            success: "https://prueba-mercado.vercel.app/success",
+            failure: "https://prueba-mercado.vercel.app/failure",
+            pending: "https://prueba-mercado.vercel.app/pending",
         },
     };
 
@@ -26,8 +26,27 @@ app.post('/payment', async(req,res)=>{
             Authorization: `Bearer ${process.env.ACCESS_TOKEN}`
         }
     });
-    res.send(payment.data);
+    res.send({url : payment.data.init_point});
     
 });
+
+app.post('/check', async(req,res)=>{
+    let {id, topic} = req.query;
+    
+    if(req.body.topic === 'merchant_order' && topic !== 'payment'){
+        let url = 'https://api.mercadolibre.com/merchant_orders';
+        const results = await fetch(`${url}/${id}?access_token=${ACCESS_TOKEN}`).then(e=> e.json());
+        if(info.order_status === 'paid'){
+            console.log(results);
+        }
+        return res.send({msg: 'listo'});
+
+    }else {
+        return res.send({msg: 'error'});
+    }
+
+});
+
+
 
 module.exports = app; 
