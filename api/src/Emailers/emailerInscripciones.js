@@ -17,12 +17,12 @@ const createTrans = () =>{
     return transport;
 }
 
-const sendMailInscripcion = async (userInscripto) => {
+const sendMailInscripcion = async (email, subject) => {
     const transporter = createTrans ()
     const info = await transporter.sendMailInscripcion({
         from: '"Club Deportivo Henry" <clubdhenry@gmail.com>', 
-        to: `${userInscripto.email}`, 
-        subject: `Hola ${userInscripto.name}. Te enviamos el detalle de tu inscripción`, 
+        to: email/* `${insertInscription.email}` */, 
+        subject/* : `Hola ${insertInscription.name}. Te enviamos el detalle de tu inscripción` */, 
         html: `
         <head>
             <link rel="stylesheet" href="./style.css">
@@ -30,7 +30,7 @@ const sendMailInscripcion = async (userInscripto) => {
         
         <div id="email___content">
             <img src="https://raw.githubusercontent.com/matias183/FrontHenryClub/main/src/utils/fotos/logo.gif" alt="">
-            <h2>Hola ${ userInscripto.name }</h2>
+            <h2>Hola </h2>
             <p>Te inscribiste exitosamente a: </p>
            
         </div>
@@ -42,4 +42,7 @@ const sendMailInscripcion = async (userInscripto) => {
     return
 }
 
-exports.sendMailInscripcion = (userInscripto) => sendMailInscripcion(userInscripto)
+//.sendMailInscripcion = (userInscripto) => sendMailInscripcion(userInscripto)
+module.exports = {
+    sendMailInscripcion
+  }
