@@ -70,15 +70,15 @@ async function buildUser (){
         roleId: 2
         });
         await User.create({
-          name: 'Goku',
+          name: 'Profe',
           surname: 'Dresfera',
           address: "Mundo exterior",
           phone: "99558656",
           email: "teacher@henry.com",
           code: 'd78d0672-7c23-40b0-9262-3912a7491778',
           status: 'VERIFIED', 
-          username: "sayayin",
-          password: "esferas",
+          username: "profesor",
+          password: "123456",
           dni: "3526563",
           isOlder: true,
           roleId: 3

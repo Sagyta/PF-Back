@@ -7,7 +7,7 @@ async function getInscription (req,res,next){
             include: [
                 {
                 model: User,
-                attributes: ['name','surname']
+                attributes: ['id','name','surname']
                 },
                 {
                 model: CategorySport,
@@ -45,7 +45,7 @@ async function getInscription (req,res,next){
             include: [
                 {
                 model: User,
-                attributes: ['name','surname']
+                attributes: ['id','name','surname']
                 },
                 {
                 model: CategorySport,
