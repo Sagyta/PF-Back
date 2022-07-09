@@ -37,7 +37,7 @@ app.post('/check', async(req,res)=>{
         let url = 'https://api.mercadolibre.com/merchant_orders';
         const results = await fetch(`${url}/${id}?access_token=${ACCESS_TOKEN}`).then(e=> e.json());
         if(results.order_status === 'paid'){
-            let backurl = 'https://backhenryclub.herokuapp.com/paid'
+            let backurl = 'https://backhenryclub.herokuapp.com/pay'
             const data = await axios.post(backurl, results);
             return res.send({msg: 'Pago enviado'});
         }
