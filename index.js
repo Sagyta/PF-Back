@@ -7,7 +7,7 @@ const {ACCESS_TOKEN} = process.env;
 
 app.post('/payment', async(req,res)=>{
    
-    let {payer_email, items, id} = req.body;
+    let {payer_email, items} = req.body;
     const url = "https://api.mercadopago.com/checkout/preferences";
 
     const body = {
