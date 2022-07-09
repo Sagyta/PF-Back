@@ -11,7 +11,6 @@ app.post('/payment', async(req,res)=>{
     const url = "https://api.mercadopago.com/checkout/preferences";
 
     const body = {
-        id,
         payer_email,
         items,
         back_urls: {
