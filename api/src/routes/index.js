@@ -16,6 +16,7 @@ const photos = require('./Photos')
 const calendar = require('./Calendars')
 const login = require('./Login')
 const newsletter = require('./Newsletter')
+const auth0 = require('./GoogleLogin')
 
 const router = Router();
 
@@ -36,4 +37,5 @@ router.use('/photo', photos)
 router.use('/calendar', calendar)
 router.use('/login', login)
 router.use('/newsletter', newsletter)
+router.use('/auth0',auth0)
 module.exports = router;

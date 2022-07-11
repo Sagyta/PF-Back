@@ -51,7 +51,6 @@ module.exports = (sequelize)=>{
 		},
 		isOlder : {
 			type: DataTypes.BOOLEAN,
-			allowNull: false,
 		},
 		tutorName : {
 			type: DataTypes.STRING,			
