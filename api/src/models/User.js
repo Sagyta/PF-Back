@@ -10,19 +10,15 @@ module.exports = (sequelize)=>{
 		},		
 		name: {
 			type: DataTypes.STRING,
-			allowNull: false
 		},
 		surname: {
 			type: DataTypes.STRING,
-			allowNull: false
 		},
 		address: {
 			type: DataTypes.STRING,
-			allowNull: false
 		},
 		phone: {
 			type: DataTypes.STRING,
-			allowNull: false
 		},
 		email: {
 			type: DataTypes.STRING,
@@ -39,19 +35,19 @@ module.exports = (sequelize)=>{
 		},
 		username: {
 			type: DataTypes.STRING,
-			allowNull: false
 		},
 		password: {
 			type: DataTypes.STRING,
-			allowNull: false 
+		},
+		sub:{
+			type: DataTypes.BOOLEAN,
+			defaultValue: false,
 		},
 		membershipNumber: {
 			type: DataTypes.INTEGER,
-			autoIncrement: true,
 		},
 		dni: {
 			type: DataTypes.STRING,
-			allowNull: false
 		},
 		isOlder : {
 			type: DataTypes.BOOLEAN,
