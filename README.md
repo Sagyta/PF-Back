@@ -79,7 +79,15 @@ SPORT
 INSCRIPTION
 
 - GET: http://localhost:3001/inscription
+- GET DETALLES: http://localhost:3001/inscription
 - POST: http://localhost:3001/inscription/{userId}
+
+REVIEW
+
+- GET: http://localhost:3001/review
+- GET DETALLE: http://localhost:3001/review/{id}
+- POST: http://localhost:3001/review/{userId}/{inscriptionId}
+- DELETE: http://localhost:3001/review/{id}
 
 NEWSLETTERS
 
@@ -675,3 +683,58 @@ Debería salir un alert al llenar el form de que su mensaje fué enviado con éx
               }
               
  - PUT con el {id} de la suscripcion
+
+### Rutas REVIEW:
+
+- GET datos que mostrara el get de los review: 
+
+        [{
+            id (del review),
+            message,
+            rating (numero),
+            inscription: 
+                {
+                    id
+                },
+            user:
+                {
+                    name
+                }
+        }]
+
+- GET DETALLES trae lo siguiente: 
+
+        {
+            id(del review),
+            message,
+            rating,
+            inscription:
+                        {
+                            id,
+                            CategorySport:
+                                    {
+                                        id
+                                        category:
+                                                {
+                                                    name
+                                                }
+                                        sport:
+                                                {
+                                                    name
+                                                }
+                                    }
+                        }
+            user:
+                {
+                    name
+                }
+        }
+
+- POST necesita que le ingresemos por parametros el {userId} ya que se hara desde el perfil de usuarios, y el {inscriptionId}, y por body los siguientes datos:
+
+        {
+            message,
+            rating
+        }
+
+- DELETE se borrara colocando solo el {id} del review en la ruta
