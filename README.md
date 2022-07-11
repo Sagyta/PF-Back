@@ -81,6 +81,12 @@ INSCRIPTION
 - GET: http://localhost:3001/inscription
 - POST: http://localhost:3001/inscription/{userId}
 
+NEWSLETTERS
+
+- GET: http://localhost:3001/newsletter
+- POST: http://localhost:3001/newsletter
+- PUT: http://localhost:3001/newsletter/{id}
+
 ## ESPECIFICACIONES TECNICAS: Sujeto a cambios, mantenerse actualizados antes de escribir codigos
 
 ### Rutas NEWS: 
@@ -636,6 +642,7 @@ Debería salir un alert al llenar el form de que su mensaje fué enviado con éx
                                           surname
                                       }  
                           }  
+                          
         }]
 
 - POST con el {userId} por parametros:
@@ -651,3 +658,20 @@ Debería salir un alert al llenar el form de que su mensaje fué enviado con éx
         }
 
 - DELETE con el {id} de inscription por parametros
+
+### Ruta NEWSLETTERS
+
+- GET datos que debe mostrar:
+
+            {
+             email,
+             status
+             }
+             
+ - POST solo debe llevar:
+     
+            {
+              email
+              }
+              
+ - PUT con el {id} de la suscripcion
