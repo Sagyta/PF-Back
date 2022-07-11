@@ -41,9 +41,10 @@ async function getReviewId(req,res,next){
                             {
                                 model: Sport,
                                 attributes:['name']
-                            }
-                    ]
-                    }]                    
+                            },
+                        ],
+                    }],
+                    attributes: {exclude:['CategorySportId', 'userId']}                    
                 },
                 {
                     model: User,
