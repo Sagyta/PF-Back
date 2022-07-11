@@ -1,4 +1,4 @@
-const {Role, Sport, Category, User} = require('../db');
+const {Role, Sport, Category, User, New} = require('../db');
 
 
 async function buildRole (){
@@ -88,6 +88,7 @@ async function buildUser (){
         next(error)
     }
 }
+
 
 module.exports = {
     buildUser,
