@@ -15,6 +15,7 @@ const album = require('./Albums')
 const photos = require('./Photos')
 const calendar = require('./Calendars')
 const login = require('./Login')
+const newsletter = require('./Newsletter')
 
 const router = Router();
 
@@ -34,5 +35,5 @@ router.use('/album', album)
 router.use('/photo', photos)
 router.use('/calendar', calendar)
 router.use('/login', login)
-
+router.use('/newsletter', newsletter)
 module.exports = router;
