@@ -7,7 +7,8 @@ const { getTemplate } = require('../../Templates/newsletterTemplate');
 async function getSuscription(req,res,next){
     try{
         const lista = await Newsletter.findAll()
-        res.send(lista);
+        let enviar = await lista.filter(el=>el.status === true)
+        res.send(enviar);
     }catch(error){
         next(error)
     }
