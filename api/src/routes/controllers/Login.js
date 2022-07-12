@@ -7,7 +7,7 @@ async function login(req, res, next) {
 		//Construir el usuario para mandar
 		const user = await User.findOne({
 			where: { email: email },
-			attributes: ["id", "name"],
+			attributes: ["id", "name", "email"],
 			include: [{ model: Role, attributes: ["name"] }],
 		});
 		//Password en otra variable para no mandarla al front
