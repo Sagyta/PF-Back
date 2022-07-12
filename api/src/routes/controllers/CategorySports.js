@@ -2,31 +2,63 @@ const {Category, User, CategorySport, Sport} = require('../../db')
 
  async function getCategorySport (req,res,next){
     try {
-        const category = await CategorySport.findAll({
+        const category = await CategorySport.findAll(
+            {where:{
+                active: true
+            }},
+            {
             include:[
                 {
-                model: User,
-                attributes: ['name', 'surname']
+                    model: User,
+                    attributes: ['name', 'surname']
                 },
                 {
-                model: Category,
-                attributes: ['name']
+                    model: Category,
+                    attributes: ['name']
                 },
                 {
-                model: Sport,
-                attributes: ['name']
+                    model: Sport,
+                    attributes: ['name']
                 },
                 
             ],
             attributes: {exclude: ['userId', 'sportId', 'categoryId']}
         })
         res.send(category)
+                
 
     } catch (error) {
         next(error)
     }
 }
+async function getCategorySportAdmin (req,res,next){
+    try {
+        const category = await CategorySport.findAll(
+            {
+            include:[
+                {
+                    model: User,
+                    attributes: ['name', 'surname']
+                },
+                {
+                    model: Category,
+                    attributes: ['name']
+                },
+                {
+                    model: Sport,
+                    attributes: ['name']
+                },
+                
+            ],
+            attributes: {exclude: ['userId', 'sportId', 'categoryId']}
+        })
+        res.send(category)
+                
 
+    } catch (error) {
+        next(error)
+    }
+}
 async function getCategorySportId(req,res,next){
     const {id} = req.params
     try {
@@ -104,6 +136,7 @@ async function putCategorySport(req,res,next){
             categoryId: req.body.categoryId,
             sportId: req.body.sportId,
             userId: req.body.userId,
+            active: req.body.active
         })
         res.status(200).send(updateCategorySport)
     }catch(error){
@@ -127,8 +160,9 @@ async function deleteCategorySport(req,res,next){
 
 module.exports = {
     getCategorySport,
+    getCategorySportAdmin,
     getCategorySportId,
     postCategorySport,
     putCategorySport,
     deleteCategorySport, 
-}//
+}

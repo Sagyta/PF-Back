@@ -89,7 +89,6 @@ async function buildUser (){
     }
 }
 
-
 module.exports = {
     buildUser,
     buildRole,
