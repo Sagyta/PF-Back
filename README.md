@@ -53,6 +53,7 @@ CATEGORY - SPORT
 
 - GET / POST: http://localhost:3001/categorysport
 - GET DETALLE / DELETE / PUT: http://localhost:3001/categorysport/{id}
+- GET PARA ADMIN: http://localhost:3001/categorysport/catAdmin
 
 ALBUM
 
@@ -399,6 +400,7 @@ Debería salir un alert al llenar el form de que su mensaje fué enviado con éx
             finish (hora de finalizacion de la clase: hh:mm:ss)
             description
             fee (cuota de la clase)
+            active (mostrara unicamente los que esten activos),
             user: (este seria el profesor)
                     {
                         name
@@ -411,6 +413,27 @@ Debería salir un alert al llenar el form de que su mensaje fué enviado con éx
             sport:
                     {
                         name
+                    }
+        }]
+- GET DE ADMIN aca traera la info completa de todas las actividades las activas e inactivas:
+
+        [{
+            id,
+            day,
+            start,
+            finish,
+            description,
+            fee,
+            active,
+            user: {
+                    name,
+                    surname
+                }
+            category: {
+                        name
+                    }
+            sport: {
+                    name
                     }
         }]
 
