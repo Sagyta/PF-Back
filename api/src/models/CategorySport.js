@@ -25,6 +25,11 @@ module.exports = (sequelize) => {
     fee:{
       type: DataTypes.INTEGER,
       allowNull: false,
+    },
+    active:{
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+      allowNull: false,
     }   
   },
   {
