@@ -42,7 +42,7 @@ async function googleLogin(req, res, next) {
       //traemos los datos que nos interesan del usuario recien creado
 			user = await User.findOne({
 				where: { email: email },
-				attributes: ["id", "name"],
+				attributes: ["id", "name", "email"],
 				include: [{ model: Role, attributes: ["name"] }],
 			});
       //generamos el token y lo mandamos
