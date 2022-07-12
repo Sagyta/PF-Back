@@ -17,6 +17,7 @@ const calendar = require('./Calendars')
 const login = require('./Login')
 const newsletter = require('./Newsletter')
 const auth0 = require('./GoogleLogin')
+const reviews = require('./Reviews')
 
 const router = Router();
 
@@ -38,4 +39,6 @@ router.use('/calendar', calendar)
 router.use('/login', login)
 router.use('/newsletter', newsletter)
 router.use('/auth0',auth0)
+router.use('/review', reviews)
+
 module.exports = router;

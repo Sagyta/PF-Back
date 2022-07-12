@@ -44,7 +44,8 @@ const {
   CategorySport,
   Album,
   Photo,
-  Calendar
+  Calendar,
+  Review,
 } = sequelize.models;
 
 // Aca vendrian las relaciones
@@ -89,6 +90,12 @@ Photo.belongsTo(Album);
 
 Sport.hasMany(Calendar, {foreignKey: 'sportId', sourceKey: 'id'});
 Calendar.belongsTo(Sport, {foreignKey: 'sportId', targetKey: 'id'});
+
+User.hasMany(Review)
+Review.belongsTo(User)
+
+Inscription.hasMany(Review)
+Review.belongsTo(Inscription)
 
 module.exports = {
   ...sequelize.models, 
