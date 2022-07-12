@@ -29,7 +29,8 @@ async function getUser(req, res, next) {
           dni: e.dni,
           role: e.role !== null ? e.role.name : "no tiene rol",
           isOlder: e.isOlder,
-          photo: e.photo 
+          photo: e.photo,
+          isBanned: e.isBanned 
         };
       } else {
         return {
@@ -47,7 +48,8 @@ async function getUser(req, res, next) {
           tutorName: e.tutorName,
           tutorPhone: e.tutorPhone,
           tutorEmail: e.tutorEmail,
-          photo: e.photo
+          photo: e.photo,
+          isBanned: e.isBanned 
         };
       }
     });
