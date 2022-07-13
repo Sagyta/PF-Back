@@ -1,4 +1,4 @@
-const {Pay} = require('../../db')
+const {Pay, Inscription} = require('../../db')
 
 async function getPay(req,res,next){
     try {
@@ -22,16 +22,22 @@ async function getPayId(req,res,next){
 
 async function postPay(req,res,next){
     const {
-        price,
-        voucher
+        unit_price,
+        order_status,
+        category_id
     } = req.body
     try {
-        if(!price){
+        if(!order_status === 'paid'){
             res.status(404).send('Debe ingresar número de pago')
         }else{
+            /* const cat = await Inscription.findOne({
+                attributes: ['CategorySportId'],
+            }) */
+            
+            console.log(cat)
              let newPayment = await Pay.create({
-                price,
-                voucher
+                unit_price,
+                order_status,               
             })
             res.send('Pago Creado')
             return newPayment

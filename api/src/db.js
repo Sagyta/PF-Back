@@ -97,6 +97,12 @@ Review.belongsTo(User)
 Inscription.hasMany(Review)
 Review.belongsTo(Inscription)
 
+Inscription.hasMany(Pay)
+Pay.belongsTo(Inscription)
+
+CategorySport.hasMany(Pay)
+Pay.belongsTo(CategorySport)
+
 module.exports = {
   ...sequelize.models, 
   conn: sequelize,     
