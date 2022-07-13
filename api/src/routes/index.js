@@ -18,6 +18,7 @@ const login = require('./Login')
 const newsletter = require('./Newsletter')
 const auth0 = require('./GoogleLogin')
 const reviews = require('./Reviews')
+const confirmacion = require('./Confirmacion');
 
 const router = Router();
 
@@ -40,5 +41,6 @@ router.use('/login', login)
 router.use('/newsletter', newsletter)
 router.use('/auth0',auth0)
 router.use('/review', reviews)
+router.use('/confirmacion', confirmacion);
 
 module.exports = router;
