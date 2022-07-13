@@ -41,8 +41,10 @@ async function putSport (req,res){
 }
 
 async function deleteSport (req,res) {
-    let {name} = req.body; 
-    let data = await Sport.findOne({where: {name: name}});
+    // let {name} = req.body; 
+    const {id} = req.params;
+    // let data = await Sport.findOne({where: {name: name}});
+    let data = await Sport.findByPk(id)
         if(data === null){
             data = {msg: 'Lo siento no hay ese deporte en la base de datos'}
         }else {
