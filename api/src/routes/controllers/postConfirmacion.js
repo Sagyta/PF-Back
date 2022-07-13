@@ -5,7 +5,7 @@ async function postConfirmacion (req,res){
     let {results} = req.body
     const idTickey = results.payments[0].id;
     const userId = results.items[0].id;
-    const CategorySportId = {CategorySports: Number(results.items[0].category_id) };
+    const CategorySportId = {CategorySportId: Number(results.items[0].category_id) };
 
     console.log(results,userId,CategorySportId);
 
@@ -15,7 +15,7 @@ async function postConfirmacion (req,res){
 
     res.send({msg: 'Todo bien'})
     }catch(e){
-        console.log(e.message);
+        console.log(e.message)
         res.send(e);
     }
 }
