@@ -1,4 +1,4 @@
-const { User, Role } = require("../../db");
+const { User, Role, Inscription, CategorySport } = require("../../db");
 const { v4: uuidv4 } = require('uuid');
 const { getToken, getTokenData } = require('../../jwt.config');
 const { sendMail } = require('../../Emailers/emailerUser')
@@ -74,6 +74,12 @@ async function getUserId(req, res, next) {
             model: Role,
             attributes: ["name"],
           },
+          {
+            model:Inscription,
+            include:[{
+              model: CategorySport,
+            }]
+          }
         ],
         attributes: { exclude: ["roleId", "code", "password"] },
       });
