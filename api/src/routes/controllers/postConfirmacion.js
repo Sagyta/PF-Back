@@ -1,6 +1,6 @@
 async function postConfirmacion (req,res){
-
-    console.log(req.body);
+    let {results} = req.body
+    console.log(results);
     res.send('hola');
 
 }
