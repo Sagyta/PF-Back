@@ -6,6 +6,6 @@ const router = Router();
 router.get('/', getSport);
 router.post('/', postSport);
 router.put('/', putSport);
-router.delete('/', deleteSport);
+router.delete('/:id', deleteSport);
 
 module.exports = router;
