@@ -8,14 +8,14 @@ async function postConfirmacion (req,res){
 
     console.log(results,userId,CategorySportId);
 
-    // const url = 'https://backhenryclub.herokuapp.com/inscription';
-    // const data = await fetch(`${url}/${userId}`, {
-    //     method: 'POST',
-    //     headers: {
-    //         "Content-Type":"application/json"
-    //     },
-    //     body: JSON.stringify(CategorySportId)
-    // });
+    const url = 'https://backhenryclub.herokuapp.com/inscription';
+    const data = await fetch(`${url}/${userId}`, {
+        method: 'POST',
+        headers: {
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify(CategorySportId)
+    }).then(e => e.json()).then(e => console.log(e));
 
     res.send('hola');
 
