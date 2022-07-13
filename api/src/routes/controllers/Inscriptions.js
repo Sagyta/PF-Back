@@ -82,7 +82,7 @@ async function postInscription(req,res,next){
             let insertInscription= await Inscription.create({
                 CategorySportId
             })            
-            userInscripto.addInscriptions(insertInscription)
+           await userInscripto.addInscription(insertInscription)
             /* emailerInscripciones.sendMailInscripcion(insertInscription) */
            /*  await sendMailInscripcion(userInscripto.email, 'Hola') */
             res.send('La inscripcion se ha realizado correctamente')
