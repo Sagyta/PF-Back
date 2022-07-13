@@ -1,6 +1,7 @@
-const fetch = require('node-fetch');
+const axios = require('axios');
 
 async function postConfirmacion (req,res){
+    try{
     let {results} = req.body
     const idTickey = results.payments[0].id;
     const userId = results.items[0].id;
@@ -8,17 +9,15 @@ async function postConfirmacion (req,res){
 
     console.log(results,userId,CategorySportId);
 
-    // const url = 'https://backhenryclub.herokuapp.com/inscription';
-    // const data = await fetch(`${url}/${userId}`, {
-    //     method: 'POST',
-    //     headers: {
-    //         "Content-Type":"application/json"
-    //     },
-    //     body: JSON.stringify(CategorySportId)
-    // }).then(e => e.json()).then(e => console.log(e));
+    const url = 'https://backhenryclub.herokuapp.com/inscription';
+   
+    const uploadInfo = await axios.post(`${url}/${userId}`, CategorySportId);
 
-    res.send('hola');
-
+    res.send({msg: 'Todo bien'});
+    }catch(e){
+        console.log(e.message);
+        res.send(e);
+    }
 }
 
 module.exports = postConfirmacion;
