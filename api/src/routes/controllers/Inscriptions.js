@@ -78,11 +78,13 @@ async function postInscription(req,res,next){
     try {
         const {CategorySportId} = req.body
         const {userId} = req.params
-        const userInscripto= await User.findByPk(userId)
+        const userInscripto= await User.findByPk(userId);
+        console.log(userInscripto);
+
             let insertInscription= await Inscription.create({
                 CategorySportId
             })            
-           await userInscripto.addInscription(insertInscription)
+        //   await userInscripto.addInscription(insertInscription)
             /* emailerInscripciones.sendMailInscripcion(insertInscription) */
            /*  await sendMailInscripcion(userInscripto.email, 'Hola') */
             res.send('La inscripcion se ha realizado correctamente')
