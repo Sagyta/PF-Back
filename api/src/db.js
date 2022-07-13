@@ -6,11 +6,28 @@ const {
   DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
 
+if (process.env.DATABASE_URL) {
+  // the application is executed on Heroku ... use the postgres database
+  sequelize = new Sequelize(process.env.DATABASE_URL, {
+    dialect: 'postgres',
+    protocol: 'postgres',
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    },
+    logging: false, // set to console.log to see the raw SQL queries
+    native: false
+  });
+}else {
+
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/club`, {
   logging: false, 
   native: false, 
   define: {timestamps: false}
-});
+})
+};
 const basename = path.basename(__filename);
 
 const modelDefiners = [];

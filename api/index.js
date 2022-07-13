@@ -1,10 +1,12 @@
-const server = require('./src/app.js');
+const server = require('./src/app.js')
 const { conn } = require('./src/db.js');
 const { buildRole, buildCategory, buildSport, buildUser} = require('./src/Preload/index.js');
 
-conn.sync({ force: false }).then(() => { 
+const PORT = process.env.PORT || 3001
+
+conn.sync({ force: true }).then(() => { 
   
-  server.listen(3001, () => {
+  server.listen(PORT, () => {
     console.log('Server corriendo'); 
     buildRole();
     buildCategory();
