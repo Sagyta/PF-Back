@@ -13,7 +13,7 @@ async function postConfirmacion (req,res){
    
     const uploadInfo = await axios.post(`${url}/${userId}`, CategorySportId);
 
-    res.send({msg: 'Todo bien'});
+    res.send({msg: 'Todo bien'})
     }catch(e){
         console.log(e.message);
         res.send(e);
