@@ -16,7 +16,6 @@ async function getReview (req,res,next){
             attributes:{exclude: ['userId','inscriptionId']}
         })
         res.send(review)
-
     } catch (error) {
         next(error)
     }

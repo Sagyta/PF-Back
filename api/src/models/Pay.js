@@ -6,13 +6,15 @@ module.exports = (sequelize) => {
       primaryKey: true,
       autoIncrement: true,
     },
-    price: {
+    unit_price: {
       type: DataTypes.STRING,
       allowNull: false,
     }, 
+    order_status:{
+      type: DataTypes.STRING,
+    },
   },
   {
-    initialAutoIncrement:1000,
-    /* timestamps: false, */
+    timestamps: false,
   });
 };
