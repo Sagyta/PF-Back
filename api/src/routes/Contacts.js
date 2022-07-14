@@ -6,6 +6,6 @@ const router = Router();
 
 router.get('/', getContact)
 router.post('/', postContact)
-router.put('/:id', deleteContact)
+router.delete('/:id', deleteContact)
 
 module.exports = router;
