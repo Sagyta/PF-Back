@@ -54,8 +54,9 @@ async function deleteContact (req,res,next){
         if(delContact){
             await delContact.destroy();
             return res.send("Contacto eliminado exitosamente")
+        } else {
+            res.status(404).send('Contacto no encontrado')
         }
-        res.status(404).send('Contacto no encontrado')
     }catch(error){
         next(error)
     }
